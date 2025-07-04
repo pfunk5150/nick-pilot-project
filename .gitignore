@@ -1,0 +1,125 @@
+# =============================================================================
+# Nick Pilot Project - AI Engagement System .gitignore
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Session & Conversation Logs (Too large for Git)
+# -----------------------------------------------------------------------------
+logs/claude_conversation.json
+logs/claude_conversation.md
+logs/claude_export_repository/conversation_log.md
+logs/model_sessions_log.md
+logs/model_thought_process_log.md
+
+# -----------------------------------------------------------------------------
+# Temporary Session Files
+# -----------------------------------------------------------------------------
+logs/temp/
+logs/working/
+*.tmp
+*.temp
+session_*.json
+conversation_*.json
+
+# -----------------------------------------------------------------------------
+# AI-Generated Artifacts (Managed separately)
+# -----------------------------------------------------------------------------
+# Note: We'll selectively track approved artifacts via git add -f
+logs/claude_export_repository/generated_artifacts/
+logs/claude_export_repository/extracted_files/
+logs/claude_export_repository/user_uploads/
+
+# -----------------------------------------------------------------------------
+# Experimental Scripts (Move to separate branch)
+# -----------------------------------------------------------------------------
+chat_conversion_script.py
+chat_converter.py
+optimized_chat_context.json
+experimental_*.py
+test_*.py
+
+# -----------------------------------------------------------------------------
+# Python Environment
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# -----------------------------------------------------------------------------
+# IDE & Editor Files
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# -----------------------------------------------------------------------------
+# Large Binary Files
+# -----------------------------------------------------------------------------
+*.pdf
+*.xlsx
+*.zip
+*.rar
+*.7z
+
+# Exception: Keep critical reference documents
+!context_files/**/*.pdf
+!context_files/**/*.xlsx
+
+# -----------------------------------------------------------------------------
+# Output & Cache Directories
+# -----------------------------------------------------------------------------
+outputs/temp/
+outputs/draft/
+.cache/
+.pytest_cache/
+
+# -----------------------------------------------------------------------------
+# Git Workflow Files
+# -----------------------------------------------------------------------------
+.git-backup/
+*.orig
+*.rej
+
+# -----------------------------------------------------------------------------
+# System Files
+# -----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini

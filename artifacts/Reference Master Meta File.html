@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #100F0F;
+            color: #CECDC3;
+        }
+
+        h2 {
+            color: #CECDC3;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .mermaid {
+            margin: 20px 0;
+            background-color: #1C1B1A;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #343331;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Reference Master Map v2.0 - ILPA Templates Engagement</h2>
+    <div class="mermaid">
+        graph TB
+        %% === Core Stakeholders ===
+        Nick["👤 Nick Maroules<br />BDO Partner<br />Asset Management"]
+        Mike["🎯 Mike (Engagement Director)<br />AI Consulting Lead"]
+
+        %% === Deliverables Timeline ===
+        subgraph Timeline["⏰ Deliverable Timeline"]
+        Outline["📝 Article Outline<br />Due: June 19-20<br />Status: In Progress"]
+        Draft["📄 Article Draft<br />2-3 pages<br />Word Format"]
+        Final["✅ Final Article<br />BDO Thought Leadership"]
+        end
+
+        %% === Article Framework ===
+        subgraph ArticleStructure["📊 Article Structure"]
+        ExecSum["Executive Summary<br />Key Takeaways"]
+        Background["Background<br />SEC PFA Context"]
+        KeyChanges["Key Changes<br />2016 vs 2025"]
+        Implementation["Implementation<br />Cost/Benefit Analysis"]
+        CTA["Call to Action<br />BDO Value Proposition"]
+        end
+
+        %% === ILPA Templates ===
+        subgraph Templates["📈 ILPA Templates Core"]
+        RT["Reporting Template v2.0<br />Updated from 2016"]
+        PT["Performance Template v1.1<br />New Standard"]
+
+        subgraph RTDetails["Reporting Changes"]
+        RTStandard["Standardized Levels"]
+        RTGranular["Granular Expenses"]
+        RTNoMod["No GP Modifications"]
+        end
+
+        subgraph PTDetails["Performance Features"]
+        PTGranular["Granular Method"]
+        PTGrossUp["Gross-Up Method"]
+        PTMetrics["IRR & TVPI/MOIC"]
+        end
+        end
+
+        %% === Strategic Positioning ===
+        subgraph Strategy["🎯 BDO Positioning"]
+        ThoughtLeader["Thought Leadership<br />Not Neutral Analysis"]
+        ValueProp["Strategic Advantage<br />Not Compliance Burden"]
+        Expertise["BDO SME<br />Follow-up Discussions"]
+        end
+
+        %% === Visual Strategy ===
+        subgraph Visuals["🎨 Visual Elements"]
+        CompTable["Comparison Tables<br />2016 vs 2025"]
+        Screenshots["Sample Screenshots<br />Anonymized"]
+        Graphs["Insight Graphs<br />Value Connection"]
+        FlowCharts["Clean Flowcharts<br />Smart Styling"]
+        end
+
+        %% === Key Statistics ===
+        subgraph Stats["📊 Industry Data"]
+        Adoption1["70% Adoption Intent<br />(Reporting)"]
+        Adoption2["52% Adoption Intent<br />(Performance)"]
+        Orgs["300+ Organizations<br />Collaborative Development"]
+        Target["Q1 2026<br />Implementation Target"]
+        end
+
+        %% === Relationships ===
+        Nick --> Mike
+        Mike --> Timeline
+
+        Timeline --> Outline
+        Outline --> Draft
+        Draft --> Final
+
+        ArticleStructure --> ExecSum
+        ExecSum --> Background
+        Background --> KeyChanges
+        KeyChanges --> Implementation
+        Implementation --> CTA
+
+        Templates --> RT
+        Templates --> PT
+        RT --> RTDetails
+        PT --> PTDetails
+
+        Background -.-> Stats
+        KeyChanges -.-> Templates
+        Implementation -.-> Strategy
+
+        Strategy --> ThoughtLeader
+        Strategy --> ValueProp
+        Strategy --> Expertise
+
+        Visuals -.-> CompTable
+        Visuals -.-> Screenshots
+        Visuals -.-> Graphs
+        Visuals -.-> FlowCharts
+
+        %% === Dark Mode Styling ===
+        classDef stakeholder fill:#101a24,stroke:#205ea6,stroke-width:3px,color:#CECDC3
+        classDef deliverable fill:#2f1813,stroke:#af3029,stroke-width:2px,color:#CECDC3
+        classDef structure fill:#1a1623,stroke:#5e4098,stroke-width:2px,color:#CECDC3
+        classDef template fill:#1a1e0c,stroke:#66800b,stroke-width:2px,color:#CECDC3
+        classDef strategy fill:#24131d,stroke:#a02f6f,stroke-width:2px,color:#CECDC3
+        classDef visual fill:#0f2623,stroke:#24837b,stroke-width:2px,color:#CECDC3
+        classDef data fill:#343331,stroke:#878580,stroke-width:2px,color:#CECDC3
+
+        class Nick,Mike stakeholder
+        class Outline,Draft,Final deliverable
+        class ExecSum,Background,KeyChanges,Implementation,CTA structure
+        class RT,PT,RTDetails,PTDetails template
+        class ThoughtLeader,ValueProp,Expertise strategy
+        class CompTable,Screenshots,Graphs,FlowCharts visual
+        class Adoption1,Adoption2,Orgs,Target data
+    </div>
+</body>
+
+</html>
