@@ -1,0 +1,215 @@
+---
+description: All Python related tasks
+globs:
+alwaysApply: false
+---
+# Python Environment and Package Management with UV
+
+The user prefers `uv` for managing Python virtual environments and packages across all their Python projects. AI agents should adhere to the following standard procedures. The user's VSCode/Cursor settings are configured to use `uv` as the custom `pip` executable.
+
+## Virtual Environments
+
+*   **Creating a new virtual environment:**
+    Unless a project specifies otherwise, always create a virtual environment in the root of the project named `.venv`.
+    ```powershell
+    uv venv .venv
+    ```
+    If a specific Python interpreter is required and known (e.g., `python3.11`), it can be specified:
+    ```powershell
+    uv venv .venv -p python3.11
+    ```
+
+*   **Activating the environment:**
+    VSCode/Cursor should automatically activate the `.venv` if it exists in the workspace root, as per user settings (`python.terminal.activateEnvironment`: true, `python.defaultInterpreterPath`: `"${workspaceFolder}\.venv\Scripts\python.exe"`).
+    If manual activation is needed for any reason:
+    *   **Windows (PowerShell):** `.\.venv\Scripts\Activate.ps1`
+    *   **Windows (CMD):** `.\.venv\Scripts\activate.bat`
+    *   **Linux/macOS:** `source .venv/bin/activate`
+
+## Package and Dependency Management with `uv`
+
+**✅ Use `uv` exclusively**
+
+-   All Python dependencies **must be installed, synchronized, and locked** using `uv`.
+-   Never use `pip`, `pip-tools`, or `poetry` directly for dependency management.
+-   The user's settings (`python.packageManager`: "custom", `python.customPipExecutablePath`: "uv") mean that VSCode/Cursor's Python extension features that would normally use `pip` should attempt to use `uv pip` or equivalent `uv` commands.
+
+### Managing Dependencies (Preferred for `pyproject.toml` based projects)
+
+For projects using `pyproject.toml` for dependency specification, use these commands:
+
+*   **Add or upgrade dependencies:**
+    This command adds the package to `pyproject.toml` (if it exists and is managed by `uv`) and updates the lock file.
+    ```powershell
+    uv add <package-name>
+    uv add <package-name>@<version-specifier>
+    ```
+    Example:
+    ```powershell
+    uv add requests
+    uv add "fastapi>=0.100.0"
+    ```
+
+*   **Remove dependencies:**
+    This command removes the package from `pyproject.toml` (if applicable) and updates the lock file.
+    ```powershell
+    uv remove <package-name>
+    ```
+    Example:
+    ```powershell
+    uv remove requests
+    ```
+
+*   **Synchronize environment from lock file:**
+    Reinstall all dependencies exactly as specified in the lock file (`uv.lock`). This ensures reproducible environments.
+    ```powershell
+    uv sync
+    ```
+
+### Managing Dependencies with `uv pip` (for `requirements.txt` or ad-hoc installs)
+
+*   **Installing a new package (ad-hoc, or if not managing via `pyproject.toml` or `requirements.in`):**
+    ```powershell
+    uv pip install <package-name>
+    ```
+    Example:
+    ```powershell
+    uv pip install flask
+    ```
+
+*   **Installing a specific version of a package (ad-hoc):**
+    ```powershell
+    uv pip install <package-name>==<version>
+    ```
+    Example:
+    ```powershell
+    uv pip install flask==2.0.0
+    ```
+
+*   **Installing packages from a `requirements.txt` file:**
+    This is common for projects that use `requirements.txt` for dependency listing.
+    ```powershell
+    uv pip install -r requirements.txt
+    ```
+
+*   **Installing packages from a `requirements.in` file (compiling first):**
+    If a `requirements.in` file is present for managing primary dependencies, it should be compiled to `requirements.txt` first.
+    ```powershell
+    uv pip compile requirements.in -o requirements.txt
+    uv pip install -r requirements.txt
+    ```
+
+*   **Adding a new package and updating traditional dependency files:**
+    1.  **If `requirements.in` is used (and no `pyproject.toml` managed by `uv`):**
+        *   Manually add the new package (e.g., `fastapi` or `fastapi==0.100.0`) to the `requirements.in` file.
+        *   Then, re-compile and install:
+            ```powershell
+            uv pip compile requirements.in -o requirements.txt
+            uv pip install -r requirements.txt
+            ```
+    2.  **If only `requirements.txt` is used (and it's meant to be manually edited or is a simple list, and no `pyproject.toml`):**
+        *   Install the package: `uv pip install <new-package-name>`
+        *   Then, update `requirements.txt`: `uv pip freeze > requirements.txt`
+        *(Caution: `uv pip freeze` captures all packages in the environment. For projects not using `pyproject.toml` or `requirements.in` as the source of truth, this is the standard way to update `requirements.txt` after ad-hoc installations.)*
+
+*   **Listing installed packages:**
+    ```powershell
+    uv pip list
+    ```
+
+*   **Freezing current environment dependencies to `requirements.txt`:**
+    To capture all packages in the current environment.
+    ```powershell
+    uv pip freeze > requirements.txt
+    ```
+
+## Running Scripts with `uv`
+
+*   **Run a script with project dependencies:**
+    Ensures the script runs within the context of the `uv`-managed environment.
+    ```powershell
+    uv run <script_name.py>
+    ```
+    Example:
+    ```powershell
+    uv run main.py
+    ```
+
+## Managing Script-Specific Dependencies (PEP 723)
+
+`uv` supports managing dependencies for individual scripts, often defined inline.
+
+*   **Inline Metadata Example:**
+    Scripts can define their dependencies directly in the file:
+    ```python
+    # /// script
+    # requires-python = ">=3.12"
+    # dependencies = [
+    #     "torch",
+    #     "torchvision",
+    #     "opencv-python",
+    #     "numpy",
+    #     "matplotlib",
+    #     "Pillow",
+    #     "timm",
+    # ]
+    # ///
+
+    print("some python code")
+    ```
+
+*   **Managing script dependencies via CLI:**
+    ```powershell
+    # Add or upgrade script dependencies
+    uv add <package-name> --script <script_name.py>
+
+    # Remove script dependencies
+    uv remove <package-name> --script <script_name.py>
+
+    # Reinstall all script dependencies from its declared dependencies
+    # (Note: `uv sync --script` works based on the script's embedded dependencies, not a separate lock file for the script itself)
+    uv run <script_name.py> # Usually sufficient to ensure dependencies are met
+    # For explicitly ensuring/installing dependencies for a script without running:
+    # (This feature might evolve in uv; `uv run` is the primary way to execute with script deps)
+    # As of current uv versions, there isn't a direct `uv sync --script` that works like project `uv sync`.
+    # Dependencies are typically resolved and installed when `uv run --script` or `uv add/remove --script` is used.
+    ```
+
+## Platform-Specific Notes
+
+### **Windows (PowerShell)**
+- Virtual environment activation: `.\.venv\Scripts\Activate.ps1`
+- All `uv` commands work identically to Unix systems
+- Use PowerShell for the best experience with `uv` on Windows
+- File paths use backslashes in Windows, but `uv` handles this automatically
+
+### **Cross-Platform Compatibility**
+- All `uv` commands (`uv add`, `uv remove`, `uv sync`, `uv pip install`, etc.) work identically across Windows, macOS, and Linux
+- Only the virtual environment activation differs between platforms
+- VSCode/Cursor automatically handles platform-specific paths when configured properly
+
+## General Workflow for AI Agents
+
+1.  **Check for `.venv`:** Before executing Python code or installing packages, ensure a `.venv` directory exists at the project root. If not, and the task involves setting up an environment or installing packages, create one using `uv venv .venv`.
+2.  **Activate Environment:** Ensure the virtual environment is active. Rely on VSCode/Cursor's auto-activation but be prepared to manually activate if terminal commands are run in a fresh, non-activated shell.
+3.  **Dependency Management Strategy:**
+    *   **If `pyproject.toml` exists and seems to be the primary definition for dependencies (e.g., has a `[project.dependencies]` or `[tool.uv.sources]` section):**
+        *   Prefer `uv add <package>` to add new dependencies.
+        *   Prefer `uv remove <package>` to remove dependencies.
+        *   Use `uv sync` to install/update the environment based on `uv.lock` or `pyproject.toml`.
+    *   **If `requirements.in` exists:**
+        *   New direct dependencies should be added to `requirements.in`.
+        *   Then compile: `uv pip compile requirements.in -o requirements.txt`.
+        *   Then install: `uv pip install -r requirements.txt`.
+    *   **If only `requirements.txt` exists (and no `pyproject.toml` or `requirements.in` as primary source):**
+        *   Install from it using `uv pip install -r requirements.txt`.
+        *   If adding new packages, install them (`uv pip install <new-package>`) and then update `requirements.txt` using `uv pip freeze > requirements.txt`.
+    *   **For script-specific dependencies:** Use `uv add <package> --script <script.py>` or guide the user to edit the inline metadata, then run with `uv run <script.py>`.
+4.  **Use `uv pip list`** to inspect installed packages.
+5.  **Use `uv run <script.py>`** to execute Python scripts within the managed environment.
+
+By following these guidelines, AI agents will align with the user's preferred Python development workflow using `uv`.
+
+
+
+

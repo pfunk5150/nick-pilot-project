@@ -1,0 +1,17 @@
+flowchart TD
+    A[Start New Claude Thread/<br/>reuse baseline project structure?] --> B[Reference Snapshot from logs/claude_export_repository]
+    B --> C{Create Git Branch or Worktree?}
+    C -->|Branch| D1[Create Git Branch: feature/thread-N]
+    C -->|Worktree| D2[Create Worktree: thread-N/]
+    D1 & D2 --> E[Launch Claude Session with Branch/Worktree Context]
+    E --> F[Generate Artifacts + Reasoning]
+    F --> G[User Reviews + Promotes]
+    G --> H{Approved?}
+    H -->|Yes| I[Merge Updates to Main Project Directory + Commit]
+    H -->|No| J[Preserve in Branch as Exploration]
+
+    subgraph Secondary Project [Experimental Side Project]
+        K[Experimental Scripts]
+        K --> L[chat_converter.py, optimized_chat_context.json, etc.]
+        L --> M[Assign to Separate Branch: experimental-thread-condensing]
+    end

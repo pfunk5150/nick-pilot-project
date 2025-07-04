@@ -1,0 +1,40 @@
+---
+theme: dark
+---
+graph TD
+    A["🏠 Main Branch<br/>(Stable Foundation)"] --> B["📊 Snapshot Assessment<br/>Check /logs/claude_export_repository/"]
+    B --> C{"🚀 Session Type?"}
+
+    C -->|Structured Work| D1["🌿 Feature Branch<br/>feature/session-YYYY-MM-DD-topic"]
+    C -->|Experimental| D2["🧪 Worktree<br/>experiments/thread-N/"]
+    C -->|Hotfix/Quick| D3["⚡ Dev Branch<br/>dev/quick-iteration"]
+
+    D1 --> E1["📝 Claude Session<br/>(Branch Context)"]
+    D2 --> E2["🔬 Claude Session<br/>(Isolated Worktree)"]
+    D3 --> E3["🔧 Claude Session<br/>(Dev Context)"]
+
+    E1 --> F1["📋 Generate Artifacts<br/>+ Reasoning Logs"]
+    E2 --> F2["🎨 Experimental Output<br/>+ Research Notes"]
+    E3 --> F3["⚡ Quick Updates<br/>+ Iterations"]
+
+    F1 --> G["👤 Human Review<br/>& Quality Gate"]
+    F2 --> G
+    F3 --> G
+
+    G --> H{"✅ Approval Status?"}
+    H -->|Approved| I1["🔄 Merge to Main<br/>+ Commit + Tag"]
+    H -->|Needs Work| I2["🔄 Continue in Branch<br/>+ Additional Iterations"]
+    H -->|Archive| I3["📦 Archive Branch<br/>+ Documentation"]
+
+    I1 --> J["📊 Update Repository<br/>+ Export Snapshot"]
+    I2 --> F1
+    I3 --> K["📚 Knowledge Base<br/>+ Lessons Learned"]
+
+    subgraph "🧪 Experimental Isolation"
+        L["chat_converter.py"]
+        M["optimized_chat_context.json"]
+        N["experimental-*"]
+        L --> O["exp/thread-condensing"]
+        M --> O
+        N --> O
+    end

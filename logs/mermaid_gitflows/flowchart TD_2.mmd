@@ -1,0 +1,18 @@
+flowchart TD
+    A[End of Claude Thread] --> B[Run<br/>claude_repository_builder.py]
+    B --> C["/logs/claude_export_repository<br/>(snapshot)"]
+    C --> D{Git repo<br/>init/commit<br/>already?}
+    D -->|yes| E[Tag/commit<br/>cycle-N-snapshot]
+    D -->|no| E
+    E --> F["Create worktree<br/>or branch<br/>(cycle-N+1)"]
+    F --> G[Launch new Claude thread<br/>using worktree path]
+    G --> H[Generate artifacts<br/>+ updates]
+    H --> I[Human review &<br/>promotion]
+    I --> J[Merge approved<br/>changes to main]
+    G --> K{Need exploration?}
+    K -->|yes| L[Create exploratory<br/>branch/worktree]
+    L --> M[Claude explores<br/>alt ideas]
+    M --> I
+    subgraph Side Project
+        C --> N[Compression scripts<br/>in separate branch]
+    end
