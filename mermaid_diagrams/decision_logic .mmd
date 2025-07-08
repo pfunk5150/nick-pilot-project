@@ -1,0 +1,44 @@
+flowchart TD
+    Start([Project Start]) --> ProjectSetup{Project Setup<br/>Complete?}
+    ProjectSetup -->|No| SetupFiles[Upload Files to<br/>Claude.ai Project]
+    SetupFiles --> InitialChat[Start Initial<br/>Chat Thread]
+    ProjectSetup -->|Yes| InitialChat
+
+    InitialChat --> WorkFlow[Execute Smart Chain<br/>Workflows]
+    WorkFlow --> GenerateContent[Generate Articles<br/>& Artifacts]
+    GenerateContent --> ContextCheck{Context Limit<br/>Reached?}
+
+    ContextCheck -->|No| WorkFlow
+    ContextCheck -->|Yes| ExportProcess[Run Export Process<br/>claude_repository_builder.py]
+
+    ExportProcess --> AnalyzeExport[Analyze Export<br/>Repository]
+    AnalyzeExport --> CreateBridge[Create Context<br/>Bridge Templates]
+    CreateBridge --> APMEnhance[Implement APM<br/>Enhancements]
+    APMEnhance --> GitCommit[Commit to GitHub<br/>Repository]
+
+    GitCommit --> NewSession[Initialize New<br/>Chat Thread]
+    NewSession --> LoadContext[Load Context<br/>from Bridge]
+    LoadContext --> RefineWork[Refine Article<br/>& Deliverables]
+
+    RefineWork --> QualityCheck{Quality<br/>Acceptable?}
+    QualityCheck -->|No| RefineWork
+    QualityCheck -->|Yes| PromoteArtifacts[Promote Artifacts<br/>to Project Workspace]
+
+    PromoteArtifacts --> FinalDelivery[Complete Nick<br/>Article Delivery]
+    FinalDelivery --> End([Project Complete])
+
+    %% Context limit handling
+    RefineWork --> NewContextCheck{New Context<br/>Limit Reached?}
+    NewContextCheck -->|Yes| ExportProcess
+    NewContextCheck -->|No| QualityCheck
+
+    %% Styling
+    classDef startEnd fill:#ff9800,stroke:#e65100,stroke-width:3px,color:#fff
+    classDef process fill:#4caf50,stroke:#2e7d32,stroke-width:2px,color:#fff
+    classDef decision fill:#2196f3,stroke:#1565c0,stroke-width:2px,color:#fff
+    classDef export fill:#9c27b0,stroke:#6a1b9a,stroke-width:2px,color:#fff
+
+    class Start,End startEnd
+    class SetupFiles,InitialChat,WorkFlow,GenerateContent,RefineWork,PromoteArtifacts,FinalDelivery process
+    class ProjectSetup,ContextCheck,QualityCheck,NewContextCheck decision
+    class ExportProcess,AnalyzeExport,CreateBridge,APMEnhance,GitCommit,NewSession,LoadContext export

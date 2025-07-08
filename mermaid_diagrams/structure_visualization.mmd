@@ -1,0 +1,45 @@
+graph TB
+    subgraph CloudSystem["☁️ Claude.ai Webchat Interface"]
+        subgraph ProjectWS["📂 Nick Pilot Project Workspace"]
+            ProjKnowledge["📚 Project Knowledge<br/>(Uploaded Files)<br/>• handbooks/<br/>• meta/<br/>• context_files/<br/>• prompts/"]
+
+            subgraph ChatThreads["💬 Chat Threads"]
+                InitialThread["🔴 Initial Thread<br/>(MAXED OUT)<br/>• 26 artifacts generated<br/>• Full article draft<br/>• Export repository created"]
+                NewThread["🟢 New Thread<br/>(PLANNED)<br/>• Context bridged<br/>• Article refinement<br/>• VKR integration<br/>• Final delivery"]
+                FutureThreads["⚪ Future Threads<br/>(IF NEEDED)<br/>• Additional refinement<br/>• Extended workflows"]
+            end
+
+            PromotedArtifacts["📁 Promoted Artifacts<br/>(From Chat → Workspace)<br/>• Selected deliverables<br/>• Finalized documents<br/>• Visual assets"]
+        end
+    end
+
+    subgraph LocalSystem["💻 Local/GitHub Project Directory"]
+        subgraph CurrentRepo["📂 Current Repository"]
+            LocalFiles["📄 Local Files<br/>• Implementation_Plan.md<br/>• Memory_Bank.md<br/>• APM enhancements<br/>• Git workflow"]
+
+            ExportRepo["📦 Export Repository<br/>logs/claude_export_repository/<br/>• conversation_log.md<br/>• generated_artifacts/<br/>• user_uploads/"]
+
+            ContextBridge["🌉 Context Bridging<br/>• Session templates<br/>• Handover protocols<br/>• Artifact validation"]
+        end
+
+        GitHubRemote["☁️ GitHub Remote<br/>• Version control<br/>• Collaboration<br/>• Branch management"]
+    end
+
+    %% Connections
+    InitialThread -.->|"Export & Archive"| ExportRepo
+    ExportRepo -->|"Context Analysis"| ContextBridge
+    ContextBridge -->|"Session Initialization"| NewThread
+    NewThread -.->|"Selected Artifacts"| PromotedArtifacts
+    LocalFiles -->|"Push/Pull"| GitHubRemote
+    ProjKnowledge <-->|"Shared Context"| LocalFiles
+
+    %% Styling
+    classDef cloudNode fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef localNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef threadNode fill:#e8f5e8,stroke:#388e3c,stroke-width:2px
+    classDef bridgeNode fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+
+    class CloudSystem,ProjectWS,ProjKnowledge,PromotedArtifacts cloudNode
+    class LocalSystem,CurrentRepo,LocalFiles,GitHubRemote localNode
+    class InitialThread,NewThread,FutureThreads threadNode
+    class ExportRepo,ContextBridge bridgeNode

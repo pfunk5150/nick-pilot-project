@@ -1,0 +1,64 @@
+graph TB
+    subgraph Claude["Claude.ai Ecosystem"]
+        subgraph ProjWS["Project Workspace Layer"]
+            PK[📚 Project Knowledge<br/>Static reference files<br/>Handbooks and guides<br/>Context templates]
+            PA[📁 Promoted Artifacts<br/>Finalized deliverables<br/>Approved documents<br/>Publication ready content]
+        end
+
+        subgraph Threads["Chat Thread Layer"]
+            T1[🔴 Thread 1 Initial<br/>Smart Chain execution<br/>26 artifacts generated<br/>Context limit reached<br/>Status ARCHIVED]
+            T2[🟢 Thread 2 Refinement<br/>Context bridge loaded<br/>Article finalization<br/>VKR integration<br/>Status PLANNED]
+            TN[⚪ Thread N Extension<br/>Additional workflows<br/>Quality assurance<br/>Final delivery<br/>Status CONDITIONAL]
+        end
+    end
+
+    subgraph Local["Local Development Environment"]
+        subgraph APM["APM Enhancement Layer"]
+            IP[📋 Implementation Plan<br/>Task definitions<br/>Agent assignments<br/>Success criteria]
+            MB[🗂️ Memory Bank<br/>Session continuity<br/>Progress tracking<br/>Risk management]
+            CB[🌉 Context Bridge Tools<br/>Session templates<br/>Handover protocols<br/>Artifact validation]
+        end
+
+        subgraph Export["Export and Analysis Layer"]
+            ER[📦 Export Repository<br/>conversation log 414KB<br/>generated artifacts 26 files<br/>extracted files<br/>user uploads]
+            CRB[🔧 Repository Builder<br/>Export automation<br/>Artifact extraction<br/>Structure analysis]
+        end
+
+        subgraph VC["Version Control Layer"]
+            LG[📁 Local Git Repository<br/>APM documentation<br/>Enhancement tracking<br/>Branch management]
+            GH[☁️ GitHub Remote<br/>Collaboration<br/>Backup and sync<br/>Version history]
+        end
+    end
+
+    %% Data Flow Connections
+    T1 -.->|Export Process| CRB
+    CRB -->|Generate| ER
+    ER -->|Analyze| CB
+    CB -->|Initialize| T2
+    T2 -.->|Promote| PA
+
+    %% APM Coordination
+    IP -->|Guide| CB
+    MB -->|Track| CB
+    CB -->|Update| MB
+
+    %% Version Control Flow
+    IP -->|Commit| LG
+    MB -->|Commit| LG
+    CB -->|Commit| LG
+    LG <-->|Sync| GH
+
+    %% Reference Flow
+    PK <-->|Reference| T2
+    PA <-->|Archive| LG
+
+    %% Styling
+    classDef claude fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef apm fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef export fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef git fill:#ffebee,stroke:#c62828,stroke-width:2px
+
+    class PK,PA,T1,T2,TN claude
+    class IP,MB,CB apm
+    class ER,CRB export
+    class LG,GH git

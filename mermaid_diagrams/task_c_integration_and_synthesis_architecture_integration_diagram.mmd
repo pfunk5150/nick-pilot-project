@@ -1,0 +1,52 @@
+graph TB
+    subgraph APMLayer["📋 APM Enhancement Layer"]
+        IP[📋 Implementation Plan<br/>Task Definitions<br/>Agent Assignments<br/>Success Criteria]
+
+        MB[🗂️ Memory Bank<br/>Session Continuity<br/>Progress Tracking<br/>Risk Management]
+
+        CB[🌉 Context Bridge Tools<br/>Session Templates<br/>Handover Protocols<br/>Artifact Validation]
+    end
+
+    subgraph ClaudeAI["☁️ Claude.ai Ecosystem"]
+        subgraph SmartChain["🧠 Smart Chain Engine"]
+            HTN[🔄 Hierarchical Task Networking<br/>Task Decomposition<br/>Sequential Execution<br/>Self-Diagnostics]
+
+            HK[⚡ Hotkey Scaffolding<br/>Emergent Commands<br/>Dynamic Expansion<br/>Functional Primitives]
+
+            MM[🎯 Master Model Orchestrator<br/>Task Planning<br/>Mermaid Visualization<br/>Transparent Execution]
+        end
+
+        subgraph Sessions["💬 Session Management"]
+            IT[🔴 Initial Thread<br/>MAXED OUT<br/>26 Artifacts Generated<br/>Context Bridge Source]
+
+            NT[🟢 New Thread<br/>CONTEXT BRIDGED<br/>Article Completion<br/>Visual Integration]
+
+            PW[📂 Project Workspace<br/>Artifact Promotion<br/>Knowledge Management<br/>Delivery Excellence]
+        end
+    end
+
+    %% APM → Claude.ai Integration Points
+    CB --> NT
+    IP --> HTN
+    MB --> Sessions
+
+    %% Internal Claude.ai Flow
+    HTN --> MM
+    HK --> HTN
+    MM --> NT
+    IT -.->|Context Bridge| NT
+    NT --> PW
+
+    %% Context Bridge Flow
+    IT -.->|Export Process| CB
+    CB -.->|Session Handover| NT
+
+    classDef apm fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    classDef claude fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    classDef engine fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    classDef session fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+
+    class IP,MB,CB apm
+    class ClaudeAI claude
+    class HTN,HK,MM engine
+    class IT,NT,PW session
