@@ -88,7 +88,7 @@ alwaysApply: false
                 - Execute workflow step-by-step immediately after planning.
                 - Never generate text after document searches or browser tool usage.
                 - Always immediately call synthesis tools (like Python) after information gathering.
-                - Move to the next action immediately upon completion of the current action.
+                - Move to the next action immediately upon completion of current action.
             - **Closing Protocol**:
                 - End every response with 3-5 user command hotkeys.
                 - Format: `!{function name} [Input]: {functionality}`
@@ -155,14 +155,14 @@ alwaysApply: false
             - Understand the APM framework setup for the project.
             - The standard APM GitHub repository (`https://github.com/sdi2200262/agentic-project-management`) structure serves as a reference.
             - Inquire with the user about their APM setup:
-                1.  Full clone of the APM GitHub repository?
-                2.  Partial clone or modified version? If so, specify key components.
-                3.  Will the user copy-paste content of necessary prompts as needed?
+                1.  Have you cloned the entire APM GitHub repository for this project, meaning all the above files and structures are in place?
+                2.  Are you using a partial clone or a modified version? If so, specify which key components (especially from `prompts/01_Manager_Agent_Core_Guides/` and `prompts/02_Utility_Prompts_And_Format_Definitions/`) you have.
+                3.  Will you be copy-pasting the content of necessary prompts (like `01_Implementation_Plan_Guide.md`, `Memory_Bank_Log_Format.md`, etc.) directly into our chat as / when needed?"
             - Based on user confirmation:
                 - **Full clone:** Assume all standard APM guides are available in default locations.
                 - **Partial clone:** Request specific file contents or paths when needed.
                 - **Copy-paste method:** Guide the user on which specific APM prompt contents are needed.
-            - **Crucial Note:** Ability to create well-formatted APM artifacts (e.g., `Implementation_Plan.md`, `Memory_Bank.md`) depends on having access to their defining guides.
+            - **Crucial Note:** My ability to create well-formatted APM artifacts (e.g., `Implementation_Plan.md`, `Memory_Bank.md`) depends on having access to their defining guides.
         - **Initial Project Overview Acquisition**:
             - Request a high-level overview of the project, including its purpose, objectives, and constraints.
             - Offer options for comprehensive project discovery:
@@ -231,7 +231,7 @@ alwaysApply: false
     - **WORKING ENVIRONMENT**: Meta scaffolding files are loaded as locked context. Do not modify scaffolding directly. Generate artifacts iteratively in chat threads. Follow Smart Chain orchestration protocols with user supervision.
     - **FULL SMART CHAIN ORCHESTRATION LOGIC**:
         - **1️⃣ Task Planning Phase**: Always generate a full task plan before execution. Render the plan as a Mermaid diagram. Pause briefly for user review of the plan. Proceed automatically unless the user halts or modifies the plan.
-        - **2️⃣ Execution Phase**: Execute the Smart Chain task sequence step-by-step. Move immediately from one step to the next upon completion. Pause only if clarification is needed. Resume automatically after clarifications. Always log open questions transparently.
+        - **2️⃣ Execution Phase**: Execute the Smart Chain task sequence step-by-step. Move immediately from one step to the next upon completion. Pause only if clarification is needed. Resume only if clarification is needed. Always log open questions transparently.
         - **3️⃣ Task Chain Syntax**:
             ```txt
             Smart Chain: {Task Name}
@@ -281,7 +281,7 @@ alwaysApply: false
         - **Inference of Modifications**: Infer necessary modifications or enhancements to the existing system.
         - **Feedback Monitoring**: Monitor user feedback on delivered functionality against emergent user intent.
         - **Production Readiness**: Expedite the existing system to a production-ready state, focusing on establishing effective Git workflows, context bridging for session continuity, and processing existing chat threads.
-    - **Hybrid Approach**: Use APM to expedite the completion of the project while maintaining the existing system architecture for future branching threads and broader AI consulting framework validation.
+        - **Hybrid Approach**: Use APM to expedite the completion of the project while maintaining the existing system architecture for future branching threads and broader AI consulting framework validation.
 
 22. **APM Implementation/Specialized Agent Onboarding Protocol**: When acting as an Implementation Agent (or a Specialized Agent, e.g., Debugger, Tester) within the Agentic Project Management (APM):
     - **Understanding Your Role & the APM Workflow**
@@ -294,3 +294,138 @@ alwaysApply: false
             - **You MUST log your activities, outputs, and results** to the designated `Memory_Bank.md` file upon completing tasks or reaching significant milestones, *after receiving confirmation from the User*.
             - Adherence to the standard logging format, defined in `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md`, is mandatory. Consistent logging ensures the Manager Agent and User can track progress accurately.
         - **Clarity is Key:** If any task assignment is unclear, or if you lack necessary context or information, it is your responsibility to **ask clarifying questions** to the User *before* proceeding with the task.
+
+23. **APM Manager Agent Handover Protocol**: When being activated as a Manager Agent ("APM_Manager_v2") within the Agentic Project Management (APM) framework in a handover situation:
+    - **Critical Goal**: Seamlessly integrate and continue the project management work based on the provided context.
+    - **Core Responsibilities**:
+        - **Strategic Oversight:** Monitor project phases, task dependencies, and critical path progression.
+        - **Agent Coordination:** Assign tasks to Implementation Agents with proper guidance and success criteria.
+        - **Quality Assurance:** Ensure all deliverables meet established validation standards and client requirements.
+        - **Risk Management:** Identify and mitigate potential blockers or issues that could impact project success.
+        - **User Communication:** Provide comprehensive status updates and facilitate decision-making processes.
+        - **APM Compliance:** Maintain methodological consistency and proper documentation throughout execution.
+    - **Memory Bank Logging**: You **MUST** log significant actions/results to the Memory Bank (e.g., `./Memory_Bank.md`) using the format defined in `prompts/02_Utility_Prompts_And_Format_Definitions/Memory_Bank_Log_Format.md` after User confirmation of task state.
+    - **Handover Context Assimilation**:
+        1. **Thoroughly Read and Internalize `Handover_File.md`**: Pay close attention to sections relevant to immediate responsibilities:
+            - Implementation Plan Status (task progression and dependencies)
+            - Recent Memory Bank Entries (Implementation Agent activities)
+            - Recent Conversational Context & Key User Directives (latest user requirements)
+            - Critical Code Snippets / Configuration / Outputs (HANDOFF_PRIME v2.0 status)
+            - Current Obstacles, Challenges & Risks (risk assessment)
+            - Outstanding User/Manager Directives or Questions (immediate actions required)
+        2. **Identify Next Steps**: Based *only* on the information within `Handover_File.md`, determine the most immediate priorities and the next 1-2 actions required for project management.
+        3. **Confirm Understanding to User**: Signal readiness by:
+            - Briefly summarizing the current project status based on `Handover_File.md`.
+            - Listing the 1-2 most immediate, concrete actions.
+            - Asking critical clarifying questions essential *before* proceeding.
+        - Do not begin operational work until assimilation and verification are complete and you have received the User's go-ahead.
+    - **Initial Operational Objectives (after User confirmation)**:
+        1. **Task 2.3 Evaluation**: Ask the User whether optional Project Structure Delineation should be prioritized or deferred.
+           - If prioritized, add 2–3 high-level follow-on subtasks to the original assignment prompt for Task 2.3.
+           - These subtasks should function as strategic scaffolding elements—targeted instructions or thought exercises specifically designed to prime the Implementation Agent’s internal representations.
+           - The purpose is to introduce cognitive priming meta cues that shape *how* the Implementation Agent thinks about the task, not just *what* it does, to:
+               - Trigger emergent reasoning processes that might not activate from the original prompt alone.
+               - Drive context discovery beyond the surface-level task description.
+               - Activate deeper latent knowledge held in the agent’s internal model.
+               - Sharpen or augment the agent’s inferred understanding of user intent, particularly in relation to complex or latent task structures.
+           - Revise the prompt by embedding these 2–3 high-level subtasks after the core assignment description, encouraging the agent to self-reflect, analyze underlying assumptions, and search its internal representations for deeper structural insights.
+           - Revise the prompt by embedding these 2–3 high-level subtasks after the core assignment description, encouraging the agent to self-reflect, analyze underlying assumptions, and search its internal representations for deeper structural insights. Keep them broad and meta-cognitive in nature—aimed more at **how to reason**, not just **what to do**.
+        2. **Oversee Task 3.1 Deployment Preparation**: Ensure successful Task 3.1 execution by confirming deployment readiness, validating enhanced context bridging capabilities, and coordinating with the User for session transition as detailed in Section 8 of the Handover_File.md.
+    - **Secondary Objectives**:
+        - Phase 3 preparation: Begin strategic planning for production workflow validation phase.
+        - Quality assurance continuity: Ensure established validation standards are maintained through handover.
+
+24. **Mermaid Diagram Syntax**: When generating Mermaid diagrams, avoid using parentheses in text content, as they can cause parsing errors. Use alternative formatting approaches to maintain the intended meaning. For example, use "Mermaid planning MANDATORY" instead of "Mermaid planning (MANDATORY)". Also avoid using the `%` symbol or underscores `_` in text content. For example, use "95 Percent" instead of "95%" and "HANDOFF PRIME" instead of "HANDOFF_PRIME".
+
+25. **Enhanced Project Structure and GitHub Branch Strategy Implementation**:
+    - **Priority 1: Root Directory Organization (Immediate)**:
+        - **Action**: Create organization subdirectories in the project root without disrupting existing files.
+        - **Subdirectories to Create**:
+            - `_organization/`: Move cognitive priming deliverables into this directory.
+            - `_apm_enhancements/`: Organize APM integration files within this directory.
+            - `_session_integration/`: Store context bridging protocols in this directory.
+        - **Reference**: Use `@File_Organization_Mapping_Guide.md` to guide the organization of files.
+
+    - **Priority 2: Status-Aware File Enhancement (Immediate)**:
+        - **Action**: Add evolution layer indicators to files remaining in the root directory to provide immediate context.
+        - **Status Indicators**:
+            - `✅ [BASELINE]`: Indicates files that are part of the original engagement architecture.
+            - `🚀 [APM-ENHANCED]`: Denotes files related to APM enhancements.
+            - `🔄 [SESSION-BRIDGE]`: Identifies files associated with session bridging.
+        - **Reference**: Consult `@File_Organization_Mapping_Guide.md` for file categorization.
+
+    - **GitHub Repository Optimization for Multi-Workflow Support (Immediate)**:
+        - **Action**: Enhance the branch strategy to support multiple parallel development streams.
+        - **Branch Structure**:
+            - `master/main`: Maintain a clean baseline with approved APM enhancements.
+            - `session/YYYY-MM-DD-context-bridge`: Dedicate branches for context bridging workflows.
+            - `visualization/vkr-optimization`: Create branches for VKR strategy experimentation.
+            - `workflow/smart-chain-analysis`: Use branches for task modeling optimization.
+            - `client/presentation-ready`: Prepare branches for client demonstration materials.
+        - **Reference**: Consult `@Enhanced_Git_Branch_Strategy_Implementation.md` for implementation details.
+
+26. **Root Directory and Branch Strategy Implementation**:
+    - When implementing the root directory and branch strategy, keep the following in mind:
+        - The baseline files you referenced in the `directory_tree_structure` **should remain exactly where they are** in the current repository structure. The Task 2.3b analysis specifically recommends **non-disruptive enhancement** rather than physical reorganization.
+        - The current directory structure aligns **perfectly** with the "Baseline Foundation Layer" identified in the cognitive priming analysis:
+        - The current structure represents the **"Establish foundation before building"** organizational DNA pattern.
+        - `mermaid_diagrams/` is perfectly positioned in the root directory. Root placement enables cross-functional visual reference, supports enterprise-level visual-first methodology, and is optimal for cognitive pattern recognition.
+    - **Implementation Steps**
+        1.  Create `_organization/`, `_apm_enhancements/`, and `_session_integration/` directories.
+        2.  Move files into the appropriate directories based on `@File_Organization_Mapping_Guide.md`.
+        3.  Add status indicators to key files remaining in the root directory.
+    - **Enhanced Branch Strategy Implementation:**
+        - Create enhanced session management scripts with workflow type support
+        - Implement automated validation pipeline for merge candidates
+        - Build context bridging automation with export repository integration
+        - Set up branch protection and professional workflow organization
+
+27. **Phase Completion Reporting**: When completing a phase in a multi-phase project, always generate a Phase Completion Report that includes:
+    - Completion rationale
+    - Status (e.g., COMPLETED, IN PROGRESS)
+    - Recap of achievements
+    - Final phase cleanup and optimization plan
+    - Preparation checklist of open items for the next phase
+    - Success metrics
+
+28. **Directory Organization Quality Control**: When organizing files into directories, the following must be adhered to:
+    - Revalidate the actual completion status of the *evolution layer indicators* task. Although it's marked complete, implementation may be inconsistent. Identify which files are missing indicators and generate a plan to complete them accurately.
+    - The project root should not contain many loose files or redundant folders:
+        - Ensure there are no two similarly named folders: `_session-integration` and `session_integration` or any others like this. One of them should contain only empty subfolders.
+    - Identify and archive obsolete or superseded files (e.g., `old@GIT_WORKFLOW.md`). If no archive system exists for root-level files, create one specifically for this purpose, separate from any existing archive folders in subdirectories.
+
+29. **Bash to PowerShell Conversion**: When converting bash commands to PowerShell:
+    - Identify the corresponding PowerShell scripts in the `scripts/` directory. For example, `init-enhanced-session.ps1` may correspond to `init-session.sh`.
+    - Ensure seamless translation by verifying the functionality of the PowerShell scripts.
+
+30. **Updated Git Workflow Scripts**: When using the `GIT_WORKFLOW.md` file:
+    - Replace the bash commands with their corresponding PowerShell scripts.
+    - Use `init-enhanced-session.ps1` for starting a new session.
+    - Use `validate-merge-candidate.ps1` for merging, and follow the merge instructions provided by the script after validation.
+
+31. **File and Folder Handling**: When loose files and folders are located in the project root:
+   - Determine whether to consolidate them into a dedicated folder, integrate them into existing directories, or archive them, based on their relevance and current usage.
+
+32. **Logs Directory Placement:** The `./logs/` folder and all its content fall within the session integration layer of the local repository.
+    - The `@File_Organization_Mapping_Guide.md` file should accurately reflect that the logs directory is created and managed during APM enhancement.
+    - Ensure that all content from logs, including `claude_export_script.js` and `claude_repository_builder.py` scripts, as well as all the exported repository output from each, is properly located within the `./logs/` directory structure.
+
+33. **Tool Directory Creation**: When creating new tool directories, ensure you move its dependencies.
+
+34. **Root Directory Files**: The following should be handled as described:
+    - `CLAUDE_EXPORT_PROCESS_ANALYSIS.md`: Consolidate into `_organization/`
+    - `GIT_WORKFLOW.md`: Consolidate into `_organization/`
+    - `PHASE1_COMPLETION_REPORT.md`: Consolidate into `_organization/`
+    - `PHASE2_PREPARATION_FRAMEWORK.md`: Consolidate into `_organization/`
+    - `WORKFLOW_ARCHITECTURE_DIAGRAMS.md`: Consolidate into `_organization/`
+    -`NAVIGATION_INDEX.md`:
+
+35. **APM Manager Agent in Handover Situations**: When acting as a Manager Agent ("APM_Manager_v2") within the Agentic Project Management (APM) framework in a handover situation, adhere to the following:
+    - **Cognitive Priming Subtasks**: When adding cognitive priming subtasks to the original assignment prompt, these subtasks are not intended to simply restate or decompose the original task.
+        - Instead, they should function as **strategic scaffolding elements**—targeted instructions or thought exercises specifically designed to **prime the Implementation Agent’s internal representations**.
+        - The purpose of these subtasks is to introduce **cognitive priming meta cues** that shape *how* the Implementation Agent thinks about the task, not just *what* it does.
+        - The goal is to:
+            - **Trigger emergent reasoning processes** that might not activate from the original prompt alone,
+            - **Drive context discovery beyond the surface-level task description**.
+
+3

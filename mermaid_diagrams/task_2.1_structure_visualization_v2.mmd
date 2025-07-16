@@ -1,0 +1,70 @@
+graph TB
+    subgraph CloudSystem["☁️ Claude.ai Webchat Interface"]
+        subgraph ProjectWS["📂 Nick Pilot Project Workspace"]
+            ProjKnowledge["📚 Project Knowledge<br/>(Uploaded Files)<br/>• handbooks/<br/>• meta/<br/>• context_files/<br/>• prompts/"]
+
+            subgraph OrchestrationLayer["🎯 Orchestration Layer - HANDOFF_PRIME v2.0"]
+                EAMaster["🤖 EA Master Model<br/>• Consultant & Strategist<br/>• Task Orchestrator<br/>• Self-Diagnostics"]
+                TaskNet["🔄 Task Networking<br/>• Hierarchical Modeling<br/>• Meta-Sequence Optimization<br/>• Goal Achievement"]
+                SmartChain["⚡ Smart Chain Engine<br/>• Mermaid Planning<br/>• Sequential Execution<br/>• Transparent Reasoning"]
+                HotkeySystem["🔑 Hotkey System<br/>• 5 Scaffolded + 5 Emergent<br/>• Recursive Expansion<br/>• Functional Primitives"]
+            end
+
+            subgraph ChatThreads["💬 Chat Threads"]
+                InitialThread["🔴 Initial Thread<br/>(MAXED OUT)<br/>• 26 artifacts generated<br/>• Full article draft<br/>• Export repository created"]
+                NewThread["🟢 New Thread<br/>(ORCHESTRATION ACTIVE)<br/>• HANDOFF_PRIME v2.0<br/>• Context + Orchestration<br/>• Article refinement<br/>• VKR integration"]
+                FutureThreads["⚪ Future Threads<br/>(ORCHESTRATED)<br/>• Seamless handovers<br/>• Extended workflows<br/>• Continuous improvement"]
+            end
+
+            PromotedArtifacts["📁 Promoted Artifacts<br/>(From Chat → Workspace)<br/>• Selected deliverables<br/>• Finalized documents<br/>• Visual assets<br/>• Quality validated"]
+        end
+    end
+
+    subgraph LocalSystem["💻 Local/GitHub Project Directory"]
+        subgraph CurrentRepo["📂 Current Repository"]
+            LocalFiles["📄 Local Files<br/>• Implementation_Plan.md<br/>• Memory_Bank.md<br/>• APM enhancements<br/>• HANDOFF_PRIME v2.0<br/>• Git workflow"]
+
+            ExportRepo["📦 Export Repository<br/>logs/claude_export_repository/<br/>• conversation_log.md (414KB)<br/>• generated_artifacts/ (26 files)<br/>• user_uploads/<br/>• extracted_files/"]
+
+            ContextBridge["🌉 Context Bridging<br/>• Session templates<br/>• HANDOFF_PRIME v2.0<br/>• Dual activation sequence<br/>• Artifact validation<br/>• Quality preservation"]
+
+            ExportWorkflow["📊 Export Workflow<br/>• claude_export_script.js<br/>• claude_repository_builder.py<br/>• Automated processing<br/>• Structure generation"]
+        end
+
+        GitHubRemote["☁️ GitHub Remote<br/>• Version control<br/>• Master + Experimental branches<br/>• Branch protection<br/>• Collaboration"]
+    end
+
+    %% Orchestration Flows
+    EAMaster -->|Activate| TaskNet
+    TaskNet -->|Enable| SmartChain
+    SmartChain -->|Generate| HotkeySystem
+    EAMaster -->|Control| NewThread
+
+    %% Export Process Flow
+    InitialThread -.->|"claude_export_script.js"| ExportWorkflow
+    ExportWorkflow -->|"claude_repository_builder.py"| ExportRepo
+    ExportRepo -->|"Context Analysis"| ContextBridge
+    ContextBridge -->|"HANDOFF_PRIME v2.0"| NewThread
+
+    %% System Integration
+    NewThread -.->|"Selected Artifacts"| PromotedArtifacts
+    LocalFiles -->|"Push/Pull"| GitHubRemote
+    ProjKnowledge <-->|"Shared Context"| LocalFiles
+    ContextBridge <-->|"APM Integration"| LocalFiles
+
+    %% Task Networking Philosophy Flow
+    TaskNet -.->|"Task Networking → Hierarchical Planning → Smart Chain"| SmartChain
+    SmartChain -.->|"→ Emergent Hotkeys → Transparent Deliverables"| HotkeySystem
+
+    %% Styling
+    classDef cloudNode fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000000
+    classDef localNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000000
+    classDef threadNode fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000000
+    classDef bridgeNode fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000000
+    classDef orchestrationNode fill:#ffecb3,stroke:#f57c00,stroke-width:3px,color:#000000
+
+    class CloudSystem,ProjectWS,ProjKnowledge,PromotedArtifacts cloudNode
+    class LocalSystem,CurrentRepo,LocalFiles,GitHubRemote localNode
+    class InitialThread,NewThread,FutureThreads threadNode
+    class ExportRepo,ContextBridge,ExportWorkflow bridgeNode
+    class OrchestrationLayer,EAMaster,TaskNet,SmartChain,HotkeySystem orchestrationNode

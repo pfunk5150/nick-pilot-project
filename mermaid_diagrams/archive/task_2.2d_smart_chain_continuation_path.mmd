@@ -1,0 +1,35 @@
+graph TB
+    subgraph APMLayer["🏗️ APM Enhancement Layer"]
+        IP[Implementation Plan<br/>Task Definitions]
+        MB[Memory Bank<br/>Session Logging]
+        CB[Context Bridge<br/>Handover Protocols]
+    end
+
+    subgraph TransitionLayer["🔄 Transition Protocol"]
+        HP[!HANDOFF_PRIME<br/>Initialization]
+        LC[!LOAD_CONTEXT<br/>Bridge Activation]
+        VB[!VALIDATE_BRIDGE<br/>Continuity Check]
+    end
+
+    subgraph ClaudeLayer["🤖 Claude.ai Orchestration"]
+        SC[Smart Chain Engine<br/>Task Sequencing]
+        HK[Hotkey Scaffold<br/>Emergent Functions]
+        SD[Self-Diagnostics<br/>Quality Control]
+    end
+
+    IP --> CB
+    MB --> CB
+    CB --> HP
+    HP --> LC
+    LC --> VB
+    VB --> SC
+    SC --> HK
+    SC --> SD
+
+    classDef apm fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef trans fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef claude fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
+
+    class IP,MB,CB apm
+    class HP,LC,VB trans
+    class SC,HK,SD claude

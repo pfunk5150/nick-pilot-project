@@ -1,0 +1,63 @@
+flowchart TD
+    Start([Project Start]) --> ProjectSetup{Project Setup<br/>Complete?}
+    ProjectSetup -->|No| SetupFiles[Upload Files to<br/>Claude.ai Project]
+    SetupFiles --> InitialChat[Start Initial<br/>Chat Thread]
+    ProjectSetup -->|Yes| InitialChat
+
+    InitialChat --> WorkFlow[Execute Smart Chain<br/>Workflows]
+    WorkFlow --> GenerateContent[Generate Articles<br/>& Artifacts]
+    GenerateContent --> ContextCheck{Context Limit<br/>Reached?}
+
+    ContextCheck -->|No| WorkFlow
+    ContextCheck -->|Yes| ExportProcess[Run Export Process<br/>claude_repository_builder.py]
+
+    ExportProcess --> AnalyzeExport[Analyze Export<br/>Repository]
+    AnalyzeExport --> CreateBridge[Create Context<br/>Bridge Templates]
+    CreateBridge --> APMEnhance[Implement APM<br/>Enhancements]
+    APMEnhance --> OrchestrationSetup[Configure HANDOFF_PRIME v2.0<br/>Orchestration Activation]
+    OrchestrationSetup --> TaskNetworkingSetup[Enable Task Networking<br/>Hierarchical Modeling]
+    TaskNetworkingSetup --> GitCommit[Commit to GitHub<br/>Repository]
+
+    GitCommit --> NewSession[Initialize New<br/>Chat Thread]
+    NewSession --> OrchestrationActivation{Orchestration<br/>Activated?}
+    OrchestrationActivation -->|Yes| TaskNetworkingExecution[Execute Hierarchical<br/>Task Modeling]
+    OrchestrationActivation -->|No| BasicContextLoad[Load Basic Context<br/>from Bridge]
+
+    TaskNetworkingExecution --> SmartChainPlanning[Smart Chain Planning<br/>Mermaid Visualization]
+    BasicContextLoad --> RefineWork
+    SmartChainPlanning --> RefineWork[Refine Article<br/>& Deliverables]
+
+    RefineWork --> SelfDiagnostics[Self-Diagnostics<br/>Performance Evaluation]
+    SelfDiagnostics --> HotkeyGeneration[Generate Hotkeys<br/>5 Scaffolded + 5 Emergent]
+    HotkeyGeneration --> QualityCheck{Quality<br/>Acceptable?}
+    QualityCheck -->|No| TaskNetworkingOptimization[Task Networking<br/>Optimization]
+    TaskNetworkingOptimization --> RefineWork
+    QualityCheck -->|Yes| PromoteArtifacts[Promote Artifacts<br/>to Project Workspace]
+
+    PromoteArtifacts --> FinalDelivery[Complete Nick<br/>Article Delivery]
+    FinalDelivery --> End([Project Complete])
+
+    %% Context limit handling with orchestration
+    RefineWork --> NewContextCheck{New Context<br/>Limit Reached?}
+    NewContextCheck -->|Yes| OrchestrationHandover[Orchestrated Handover<br/>HANDOFF_PRIME v2.0]
+    OrchestrationHandover --> ExportProcess
+    NewContextCheck -->|No| QualityCheck
+
+    %% Task Networking Meta-Flow
+    TaskNetworkingExecution -.->|"Task Networking →<br/>Hierarchical Planning →<br/>Smart Chain"| SmartChainPlanning
+    HotkeyGeneration -.->|"→ Emergent Hotkeys →<br/>Transparent Deliverables →<br/>Continuous Improvement"| SelfDiagnostics
+
+    %% Styling
+    classDef startEnd fill:#ff9800,stroke:#e65100,stroke-width:3px,color:#fff
+    classDef process fill:#4caf50,stroke:#2e7d32,stroke-width:2px,color:#fff
+    classDef decision fill:#2196f3,stroke:#1565c0,stroke-width:2px,color:#fff
+    classDef export fill:#9c27b0,stroke:#6a1b9a,stroke-width:2px,color:#fff
+    classDef orchestration fill:#ffecb3,stroke:#f57c00,stroke-width:3px,color:#000
+    classDef networking fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+
+    class Start,End startEnd
+    class SetupFiles,InitialChat,WorkFlow,GenerateContent,RefineWork,PromoteArtifacts,FinalDelivery process
+    class ProjectSetup,ContextCheck,QualityCheck,NewContextCheck,OrchestrationActivation decision
+    class ExportProcess,AnalyzeExport,CreateBridge,APMEnhance,GitCommit,NewSession,BasicContextLoad export
+    class OrchestrationSetup,OrchestrationHandover orchestration
+    class TaskNetworkingSetup,TaskNetworkingExecution,SmartChainPlanning,SelfDiagnostics,HotkeyGeneration,TaskNetworkingOptimization networking

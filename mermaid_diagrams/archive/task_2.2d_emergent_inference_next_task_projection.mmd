@@ -1,0 +1,24 @@
+graph TB
+    subgraph ContextCapture["🔍 Context Capture Layer"]
+        EC[📦 Export Catalog<br/>26 Artifacts Analyzed]
+        QA[✅ Quality Assessment<br/>Technical/Audience/Format]
+        CV[🎯 Context Validation<br/>Critical Elements Preserved]
+    end
+
+    subgraph ContextBridge["🌉 Context Bridge Layer"]
+        ST[📄 Session Templates<br/>Initialization Protocols]
+        AI[🔗 Artifact Integration<br/>Utilization Framework]
+        PM[📊 Preservation Matrix<br/>Quality Standards]
+    end
+
+    EC --> QA
+    QA --> CV
+    CV --> ST
+    ST --> AI
+    AI --> PM
+
+    classDef context fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000000
+    classDef bridge fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000000
+
+    class EC,QA,CV context
+    class ST,AI,PM bridge

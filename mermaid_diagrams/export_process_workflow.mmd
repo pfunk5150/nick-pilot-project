@@ -1,0 +1,80 @@
+graph TB
+    subgraph ClaudeThread["☁️ Claude.ai Webchat Thread"]
+        CT[💬 Active Thread<br/>Conversation in Progress<br/>Artifacts Generated<br/>Context Accumulating]
+        CL[🔴 Context Limit<br/>Thread Maxed Out<br/>Export Required<br/>Continuation Needed]
+    end
+
+    subgraph BrowserExport["🌐 Browser-Based Export"]
+        BE[📜 claude_export_script.js<br/>16KB JavaScript<br/>405 lines<br/>Browser Console Execution]
+        API[🔌 Claude API<br/>Fetch Conversation Data<br/>Extract Artifacts<br/>Capture Thinking Sections]
+        DL[💾 Download Files<br/>claude_conversation.md 482KB<br/>claude_conversation.json 679KB<br/>Complete Export Package]
+    end
+
+    subgraph LocalProcessing["💻 Local Repository Building"]
+        RB[🐍 claude_repository_builder.py<br/>Python Script<br/>UV Virtual Environment<br/>JSON Parsing Engine]
+
+        subgraph Processing["🔧 Processing Steps"]
+            P1[📊 Parse JSON<br/>Extract Metadata<br/>Identify Content Types<br/>Map Relationships]
+            P2[🗂️ Categorize Content<br/>User Uploads<br/>AI Artifacts<br/>Project Files]
+            P3[📁 Create Structure<br/>Directory Organization<br/>File Naming<br/>Version Control]
+        end
+    end
+
+    subgraph ExportRepository["📦 Export Repository Structure"]
+        subgraph OutputDirs["📂 ./logs/claude_export_repository/"]
+            CLog[📄 conversation_log.md<br/>414KB Complete Transcript<br/>Formatted Markdown<br/>Full Context Preserved]
+
+            GA[📁 generated_artifacts/<br/>26 AI-Created Files<br/>Articles & Components<br/>Visual Plans & QA Reports]
+
+            UU[📁 user_uploads/<br/>3 Session Input Files<br/>Original Materials<br/>Reference Documents]
+
+            EF[📁 extracted_files/<br/>Project Context<br/>Reconstructed Structure<br/>Meta & Handbook Files]
+        end
+    end
+
+    subgraph ContextBridge["🌉 Context Bridge Integration"]
+        CB[🔄 Context Analysis<br/>Artifact Validation<br/>Quality Assessment<br/>Handover Preparation]
+        HP[📋 HANDOFF_PRIME v2.0<br/>Session Templates<br/>Orchestration Activation<br/>Continuation Protocol]
+    end
+
+    %% Export Flow
+    CT -->|Reach Limit| CL
+    CL -->|User Action| BE
+    BE -->|Execute in Browser| API
+    API -->|Generate| DL
+
+    %% Processing Flow
+    DL -->|Download to Local| RB
+    RB -->|Process| P1
+    P1 --> P2
+    P2 --> P3
+    P3 -->|Generate| OutputDirs
+
+    %% Output Structure
+    OutputDirs --> CLog
+    OutputDirs --> GA
+    OutputDirs --> UU
+    OutputDirs --> EF
+
+    %% Context Bridge Flow
+    CLog -->|Analyze| CB
+    GA -->|Validate| CB
+    CB -->|Prepare| HP
+    HP -->|New Session| CT
+
+    %% Annotations
+    BE -.->|"Automatic Detection:<br/>Conversation ID<br/>Organization ID"| API
+    RB -.->|"Execution:<br/>python main.py"| P1
+    CB -.->|"26 Artifacts<br/>Ready for<br/>Integration"| HP
+
+    classDef claude fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
+    classDef browser fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000000
+    classDef local fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px,color:#000000
+    classDef export fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000000
+    classDef bridge fill:#ffecb3,stroke:#f57c00,stroke-width:2px,color:#000000
+
+    class CT,CL claude
+    class BE,API,DL browser
+    class RB,P1,P2,P3,Processing local
+    class CLog,GA,UU,EF,OutputDirs,ExportRepository export
+    class CB,HP,ContextBridge bridge

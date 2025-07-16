@@ -1,0 +1,64 @@
+graph TB
+    subgraph "Context Bridge Unified Architecture v2"
+        subgraph "Phase 1: Context Extraction"
+            A[Initial Claude Session<br/>MAX LIMIT REACHED<br/>26 artifacts + conversation]
+            B[claude_conversation_exporter.js<br/>Extract full context]
+            C[claude_repository_builder.py<br/>Structure analysis]
+            D[Export Repository<br/>logs/claude_export_repository/]
+
+            A --> B
+            B --> C
+            C --> D
+        end
+
+        subgraph "Phase 2: Dual-Architecture Processing"
+            E[Smart Chain Context Analysis<br/>Task decomposition patterns<br/>Mermaid planning extraction]
+            F[APM Context Parsing<br/>Agent coordination history<br/>Memory Bank integration]
+            G[Dual-Architecture Synthesis<br/>EA Master Model + APM fusion]
+
+            D --> E
+            D --> F
+            E --> G
+            F --> G
+        end
+
+        subgraph "Phase 3: Enhanced Handoff Protocol"
+            H[HANDOFF_PRIME v2.0<br/>Dual activation sequence]
+            I[Context Bridge Templates<br/>Session initialization]
+            J[Git Multi-Branch Integration<br/>Workflow state preservation]
+
+            G --> H
+            H --> I
+            H --> J
+        end
+
+        subgraph "Phase 4: Session Continuation"
+            K[New Claude Session<br/>Enhanced initialization]
+            L[Smart Chain Reactivation<br/>EA Master Model persona]
+            M[APM Coordination Layer<br/>Task tracking + quality gates]
+            N[Unified Workflow Execution<br/>Nick article completion]
+
+            I --> K
+            J --> K
+            K --> L
+            K --> M
+            L --> N
+            M --> N
+        end
+    end
+
+    %% Feedback loops
+    N -.->|"Context limit reached"| B
+    N -.->|"Workflow optimization"| E
+    N -.->|"Quality feedback"| F
+
+    %% Styling
+    classDef extraction fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:black
+    classDef processing fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:black
+    classDef handoff fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:black
+    classDef execution fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:black
+
+    class A,B,C,D extraction
+    class E,F,G processing
+    class H,I,J handoff
+    class K,L,M,N execution

@@ -1,0 +1,94 @@
+---
+config:
+  theme: neo-dark
+  layout: elk
+---
+flowchart TB
+ subgraph subGraph0["EA Master Model Architecture"]
+        PRIME["🎭 _PRIME Protocol<br>Orchestration activation<br>Persona integration"]
+        SMART["⚡ Smart Chain Engine<br>Mermaid planning mandatory<br>Sequential task execution"]
+        HOTKEY["🔥 Hotkey Scaffolding<br>5 scaffolded + 5 emergent<br>Dynamic workflow expansion"]
+        DIAG["🔍 Self-Diagnostics<br>10-dimension assessment<br>Continuous improvement"]
+  end
+ subgraph subGraph1["APM Enhancement Architecture"]
+        MANAGER["👔 Manager Agent<br>Strategic oversight<br>Quality assurance"]
+        IMPL["🛠️ Implementation Agents<br>Specialized execution<br>Task coordination"]
+        MEMORY["📚 Memory Bank<br>Session continuity<br>Progress tracking"]
+        PLAN["📋 Implementation Plan<br>Phase management<br>Dependency tracking"]
+  end
+ subgraph subGraph2["Fusion Integration Layer"]
+        HANDOFF["🌉 HANDOFF_PRIME v2.0<br>Dual activation sequence<br>Context preservation"]
+        BRIDGE["🔄 Context Bridge<br>Session continuity<br>Architecture coordination"]
+        WORKFLOW["⚙️ Workflow Optimization<br>Pattern recognition<br>Efficiency enhancement"]
+  end
+ subgraph subGraph3["Project Evolution Layers"]
+        BASELINE["📁 Baseline Foundation<br>handbooks/ meta/ context_files/<br>Original EA architecture"]
+        SESSION["💬 Session Integration<br>Export repository<br>Context bridging protocols"]
+        ENHANCE["🚀 APM Enhancement<br>Systematic coordination<br>Quality frameworks"]
+        FUSION_LAYER["🔄 Architecture Fusion<br>Dual-system integration<br>Optimized workflows"]
+  end
+ subgraph subGraph4["Dual-Architecture Master Framework v2"]
+        subGraph0
+        subGraph1
+        subGraph2
+        subGraph3
+  end
+    PRIME --> SMART
+    SMART --> HOTKEY
+    HOTKEY --> DIAG
+    MANAGER --> IMPL
+    IMPL --> MEMORY
+    MEMORY --> PLAN
+    PLAN --> MANAGER
+    HANDOFF --> BRIDGE
+    BRIDGE --> WORKFLOW
+    BASELINE --> SESSION
+    SESSION --> ENHANCE
+    ENHANCE --> FUSION_LAYER
+    SMART <--> IMPL
+    DIAG <--> MEMORY
+    HOTKEY <--> PLAN
+    PRIME <--> MANAGER
+    HANDOFF <--> SMART & MANAGER
+    BRIDGE <--> MEMORY & DIAG
+    WORKFLOW <--> HOTKEY & IMPL
+    BASELINE <--> PRIME
+    SESSION <--> HANDOFF
+    ENHANCE <--> BRIDGE
+    FUSION_LAYER <--> WORKFLOW
+    FUSION_LAYER -. "Claude.ai Session" .-> CLAUDE["☁️ Claude.ai<br>Enhanced activation"]
+    FUSION_LAYER -. Git Repository .-> GIT["📂 Git Multi-Branch<br>Workflow management"]
+    FUSION_LAYER -. Deliverables .-> NICK["📄 Nick Article<br>Professional output"]
+     PRIME:::ea
+     SMART:::ea
+     HOTKEY:::ea
+     DIAG:::ea
+     MANAGER:::apm
+     IMPL:::apm
+     MEMORY:::apm
+     PLAN:::apm
+     HANDOFF:::fusion
+     BRIDGE:::fusion
+     WORKFLOW:::fusion
+     BASELINE:::evolution
+     SESSION:::evolution
+     ENHANCE:::evolution
+     FUSION_LAYER:::evolution
+     CLAUDE:::external
+     GIT:::external
+     NICK:::external
+     subGraph0:::eaSubgraph
+     subGraph1:::apmSubgraph
+     subGraph2:::fusionSubgraph
+     subGraph3:::evolutionSubgraph
+     subGraph4:::masterSubgraph
+    classDef ea fill:#1E281E,stroke:#2e7d32,stroke-width:2px,color:white
+    classDef apm fill:#141F28,stroke:#1976d2,stroke-width:2px,color:white
+    classDef fusion fill:#221824,stroke:#7b1fa2,stroke-width:3px,color:white
+    classDef evolution fill:#292011,stroke:#f57c00,stroke-width:2px,color:white
+    classDef external fill:#261719,stroke:#804343,stroke-width:2px,color:white
+    classDef eaSubgraph fill:#0f1a0f,stroke:#2e7d32,stroke-width:2px,color:#a5d6a7
+    classDef apmSubgraph fill:#0a141c,stroke:#1976d2,stroke-width:2px,color:#90caf9
+    classDef fusionSubgraph fill:#151017,stroke:#7b1fa2,stroke-width:2px,color:#ce93d8
+    classDef evolutionSubgraph fill:#1c1708,stroke:#f57c00,stroke-width:2px,color:#ffcc02
+    classDef masterSubgraph fill:#0d0d0d,stroke:#555555,stroke-width:3px,color:#cccccc

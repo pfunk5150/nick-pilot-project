@@ -1,0 +1,29 @@
+graph LR
+    subgraph MaxedThread["🔴 Maxed Out Thread"]
+        MT[Initial Session<br/>95% Complete<br/>26 Artifacts<br/>414KB Context]
+    end
+
+    subgraph BridgeProtocol["🌉 Bridge Protocol"]
+        BP1[Export Analysis]
+        BP2[Quality Validation]
+        BP3[Template Creation]
+        BP4[Handover Design]
+    end
+
+    subgraph NewThread["🟢 New Thread"]
+        NT[Fresh Session<br/>Context Loaded<br/>VKR Ready<br/>Article Completion]
+    end
+
+    MT -->|claude_repository_builder.py| BP1
+    BP1 --> BP2
+    BP2 --> BP3
+    BP3 --> BP4
+    BP4 -->|!HANDOFF_PRIME| NT
+
+    classDef maxed fill:#ffebee,stroke:#c62828,stroke-width:3px
+    classDef bridge fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef new fill:#e8f5e8,stroke:#388e3c,stroke-width:3px
+
+    class MT maxed
+    class BP1,BP2,BP3,BP4 bridge
+    class NT new

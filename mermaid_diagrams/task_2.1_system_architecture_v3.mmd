@@ -1,0 +1,84 @@
+---
+config:
+  theme: neo-dark
+  layout: elk
+---
+flowchart TB
+ subgraph subGraph0["Project Workspace Layer"]
+        PK["📚 Project Knowledge<br>Baseline EA Architecture<br>handbooks/ meta/ context_files/"]
+        PA["📁 Promoted Artifacts<br>Validated deliverables<br>Client-ready outputs"]
+  end
+ subgraph subGraph1["Chat Thread Layer"]
+        T1["🔴 Thread 1: Initial<br>EA Master Model activation<br>Smart Chain orchestration<br>26 artifacts generated<br>Status: ARCHIVED"]
+        T2["🟢 Thread 2: Enhanced<br>Dual-architecture activation<br>HANDOFF_PRIME v2.0<br>APM + EA Master fusion<br>Status: READY"]
+  end
+ subgraph subGraph2["Claude.ai Ecosystem"]
+        subGraph0
+        subGraph1
+  end
+ subgraph subGraph3["Dual-Architecture Orchestration Layer"]
+        EA["🎭 EA Master Model<br>Smart Chain Engine<br>Mermaid planning mandatory<br>Hotkey scaffolding<br>Self-diagnostics"]
+        APM["📋 APM Framework<br>Implementation Plan<br>Memory Bank<br>Agent coordination<br>Quality gates"]
+        FUSION["🔄 Architecture Fusion<br>Dual activation sequence<br>Context preservation<br>Workflow optimization"]
+  end
+ subgraph subGraph4["Context Bridge Infrastructure"]
+        ER["📦 Export Repository<br>conversation_log.md<br>26 artifacts<br>Smart Chain patterns<br>APM coordination history"]
+        CB["🌉 Context Bridge Tools<br>HANDOFF_PRIME v2.0<br>Session templates<br>Dual-architecture handoff"]
+  end
+ subgraph subGraph5["Git Multi-Branch Workflow"]
+        MAIN["🌿 main branch<br>Production baseline<br>Approved enhancements"]
+        EXP["🔬 experimental-scripts<br>Development utilities<br>Testing frameworks"]
+        SESS["💬 session/context-bridge<br>Session continuity<br>Handoff protocols"]
+        VIZ["📊 visualization/vkr<br>Visual optimization<br>Diagram enhancement"]
+  end
+ subgraph subGraph6["Local Development Environment"]
+        subGraph3
+        subGraph4
+        subGraph5
+  end
+    EA <--> FUSION
+    APM <--> FUSION
+    ER --> CB
+    CB --> FUSION
+    MAIN --> EXP & SESS & VIZ
+    T1 -. Export Process .-> ER
+    ER -- Context Analysis --> CB
+    CB -- Dual Activation --> T2
+    T2 -. Artifact Promotion .-> PA
+    FUSION -- Session Initialization --> T2
+    FUSION -- Version Control --> MAIN
+    PK <-- Knowledge Reference --> T2
+    SESS -- Context Bridging --> CB
+    VIZ -- Visual Enhancement --> CB
+    EXP -- Utility Integration --> CB
+     PK:::claude
+     PA:::claude
+     T1:::claude
+     T2:::claude
+     EA:::orchestration
+     APM:::orchestration
+     FUSION:::fusion
+     ER:::bridge
+     CB:::bridge
+     MAIN:::git
+     EXP:::git
+     SESS:::git
+     VIZ:::git
+     subGraph0:::claudeSubgraph
+     subGraph1:::claudeSubgraph
+     subGraph2:::claudeContainerSubgraph
+     subGraph3:::dualArchSubgraph
+     subGraph4:::bridgeSubgraph
+     subGraph5:::gitSubgraph
+     subGraph6:::masterContainerSubgraph
+    classDef claude fill:#112027,stroke:#0277bd,stroke-width:2px,color:white
+    classDef orchestration fill:#1E281E,stroke:#2e7d32,stroke-width:2px,color:white
+    classDef bridge fill:#292011,stroke:#ef6c00,stroke-width:2px,color:white
+    classDef git fill:#261719,stroke:#c62828,stroke-width:2px,color:white
+    classDef fusion fill:#221823,stroke:#7b1fa2,stroke-width:3px,color:white
+    classDef claudeSubgraph fill:#081419,stroke:#0277bd,stroke-width:2px,color:#81d4fa
+    classDef claudeContainerSubgraph fill:#050b0f,stroke:#01579b,stroke-width:2px,color:#4fc3f7
+    classDef dualArchSubgraph fill:#141a14,stroke:#7b1fa2,stroke-width:3px,color:#a5d6a7
+    classDef bridgeSubgraph fill:#1a1508,stroke:#ef6c00,stroke-width:2px,color:#ffb74d
+    classDef gitSubgraph fill:#190c0e,stroke:#c62828,stroke-width:2px,color:#ef5350
+    classDef masterContainerSubgraph fill:#0a0a0a,stroke:#424242,stroke-width:3px,color:#bdbdbd
