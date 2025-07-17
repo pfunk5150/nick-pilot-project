@@ -1,0 +1,85 @@
+graph TB
+    subgraph "Strategic Feedback Checkpoint Framework"
+        A[Meta-Cognitive Risk Assessment] --> B[Dynamic Checkpoint Generation]
+        B --> C[Strategic Placement Logic]
+
+        subgraph "Checkpoint Types"
+            D["🔴 MANDATORY<br/>High-risk zones"]
+            E["🟡 CONDITIONAL<br/>Context-dependent"]
+            F["🟢 INFORMATIONAL<br/>Progress updates"]
+            G["🔵 EMERGENT<br/>Discovered complexity"]
+        end
+
+        C --> D
+        C --> E
+        C --> F
+        C --> G
+    end
+
+    subgraph "Interaction Formats"
+        H["✅ Checkbox Validation<br/>Structured confirmation"]
+        I["⚡ Hotkey Responses<br/>Quick selection"]
+        J["📋 Staged File Diffs<br/>Change approval"]
+        K["🎯 Priority Ranking<br/>Scope adjustment"]
+    end
+
+    D --> H
+    E --> I
+    F --> J
+    G --> K
+
+    subgraph "Risk Zones"
+        L["Directory Structure<br/>🔴 MANDATORY"]
+        M["Dual-Architecture<br/>🔴 MANDATORY"]
+        N["Cross-Platform Scripts<br/>🔴 MANDATORY"]
+        O["Documentation Sync<br/>🟡 CONDITIONAL"]
+        P["Quality Criteria<br/>🟡 CONDITIONAL"]
+        Q["Progress Milestones<br/>🟢 INFORMATIONAL"]
+    end
+
+    A --> L
+    A --> M
+    A --> N
+    A --> O
+    A --> P
+    A --> Q
+
+    subgraph "Execution Flow"
+        R[Pre-Execution Validation]
+        S[Section-by-Section Execution]
+        T[Dynamic Checkpoint Generation]
+        U[User Response Processing]
+        V[Response Logging]
+        W[Post-Execution Validation]
+    end
+
+    R --> S
+    S --> T
+    T --> U
+    U --> V
+    V --> S
+    S --> W
+
+    subgraph "Benefits"
+        X["Zero Semantic Drift<br/>Intent preservation"]
+        Y["Token Efficiency<br/>Context continuity"]
+        Z["Lightweight Interaction<br/>Minimal overhead"]
+        AA["Traceability<br/>Pattern analysis"]
+    end
+
+    V --> X
+    U --> Y
+    H --> Z
+    V --> AA
+
+    classDef checkpoint fill:#1E281E,stroke:#2e7d32,stroke-width:2px,color:#ffffff
+    classDef interaction fill:#141F28,stroke:#1976d2,stroke-width:2px,color:#ffffff
+    classDef risk fill:#292011,stroke:#f57c00,stroke-width:2px,color:#ffffff
+    classDef flow fill:#261719,stroke:#c2185b,stroke-width:2px,color:#ffffff
+    classDef benefit fill:#182322,stroke:#7b1fa2,stroke-width:2px,color:#ffffff
+
+    class A,B,C,D,E,F,G checkpoint
+    class H,I,J,K interaction
+    class L,M,N,O,P,Q risk
+    class R,S,T,U,V,W flow
+    class X,Y,Z,AA benefit
