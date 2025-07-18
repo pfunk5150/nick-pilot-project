@@ -47,7 +47,9 @@ A JavaScript utility to export your Claude AI conversations as Markdown and JSON
 	- Generate and download the Markdown file
 	- Generate and download the JSON file
 
-## Downloaded FilesThe script will download two files:
+## Downloaded Files
+
+### The script will download two files:
 
 - `claude_conversation.md` - A formatted Markdown version of the conversation
 - `claude_conversation.json` - The raw JSON data of the conversation
