@@ -9,17 +9,17 @@
 
 ## 📊 COMPREHENSIVE ISSUE SUMMARY TABLE
 
-| Issue ID           | Priority     | Component              | Status          | Description                                   | Impact                                      | Action Required                        |
-|--------------------|--------------|------------------------|-----------------|-----------------------------------------------|---------------------------------------------|----------------------------------------|
-| **CRITICAL-001**   | 🔴 CRITICAL  | `logs/README.md`       | ❌ **FAILED**    | Documentation references wrong tool locations | **HIGH** - User confusion, broken workflows | Complete rewrite of tool documentation |
-| **MEDIUM-001**     | 🟡 MEDIUM    | `.mypy_cache/` (root)  | ❌ **FAILED**    | Unnecessary Python cache artifacts            | **MEDIUM** - Directory clutter              | Remove cache directories               |
-| **MEDIUM-002**     | 🟡 MEDIUM    | `.mypy_cache/` (tools) | ❌ **FAILED**    | Duplicate cache artifacts                     | **MEDIUM** - Directory clutter              | Remove cache directories               |
-| **MEDIUM-003**     | 🟡 MEDIUM    | `mermaid_diagrams/`    | 🟡 **PARTIAL**  | Versioned files need archiving                | **MEDIUM** - Navigation clarity             | Move v1/v2 files to archive/           |
-| **LOW-001**        | 🟢 LOW       | `Untitled-1.mmd`       | 🟡 **PARTIAL**  | Unnamed diagram file                          | **LOW** - Professional presentation         | Rename or remove file                  |
-| **VALIDATION-001** | ✅ **PASSED** | Directory Structure    | ✅ **IMPROVED**  | Root items reduced 24→22                      | **POSITIVE** - Better organization          | Continue consolidation                 |
-| **VALIDATION-002** | ✅ **PASSED** | Git Workflow           | ✅ **COMPLETED** | Proper commits established                    | **POSITIVE** - Version control              | Maintain compliance                    |
-| **VALIDATION-003** | ✅ **PASSED** | Dual Architecture      | ✅ **PRESERVED** | APM+EA Master Model intact                    | **POSITIVE** - Framework integrity          | Continue integration                   |
-| **!USER-FLAGGED**  | High
+| Issue ID           | Priority     | Component                       | Status                  | Description                                   | Impact                                               | Action Required                        |
+|--------------------|--------------|---------------------------------|-------------------------|-----------------------------------------------|------------------------------------------------------|----------------------------------------|
+| **CRITICAL-001**   | 🔴 CRITICAL  | `logs/README.md`                | ❌ **FAILED**            | Documentation references wrong tool locations | **HIGH** - User confusion, broken workflows          | Complete rewrite of tool documentation |
+| **MEDIUM-001**     | 🟡 MEDIUM    | `.mypy_cache/` (root)           | ❌ **FAILED**            | Unnecessary Python cache artifacts            | **MEDIUM** - Directory clutter                       | Remove cache directories               |
+| **MEDIUM-002**     | 🟡 MEDIUM    | `.mypy_cache/` (tools)          | ❌ **FAILED**            | Duplicate cache artifacts                     | **MEDIUM** - Directory clutter                       | Remove cache directories               |
+| **MEDIUM-003**     | 🟡 MEDIUM    | `mermaid_diagrams/`             | 🟡 **PARTIAL**          | Versioned files need archiving                | **MEDIUM** - Navigation clarity                      | Move v1/v2 files to archive/           |
+| **LOW-001**        | 🟢 LOW       | `Untitled-1.mmd`                | 🟡 **PARTIAL**          | Unnamed diagram file                          | **LOW** - Professional presentation                  | Rename or remove file                  |
+| **VALIDATION-001** | ✅ **PASSED** | Directory Structure             | ✅ **IMPROVED**          | Root items reduced 24→22                      | **POSITIVE** - Better organization                   | Continue consolidation                 |
+| **VALIDATION-002** | ✅ **PASSED** | Git Workflow                    | ✅ **COMPLETED**         | Proper commits established                    | **POSITIVE** - Version control                       | Maintain compliance                    |
+| **VALIDATION-003** | ✅ **PASSED** | Dual Architecture               | ✅ **PRESERVED**         | APM+EA Master Model intact                    | **POSITIVE** - Framework integrity                   | Continue integration                   |
+| **!USER-FLAGGED**  | 🔴 High      | various-see user feedback below | Failed/Partially Failed | see user feedback below                       | **High/Urgent** - user confusion / dealy frustration | immediate-see user feedback below      |
 
 ---
 
@@ -75,8 +75,8 @@ tools/
 
 ---
 
-### **Issue #3: Mermaid Diagrams Organization**
-**Priority:** 🟡 MEDIUM - Organizational improvement
+### **Issue #3: Mermaid Diagrams Overhaul / Organization**
+**Priority:** 🟡 HIGH - Organizational improvement
 **Directory:** `mermaid_diagrams/`
 
 **Problem Details:**
@@ -141,7 +141,7 @@ Propose diagram formats, naming conventions, and progressive layout strategies (
 
 ### **🔴 Critical Actions (Must Complete)**
 - [ ] **Update logs/README.md** - Complete documentation rewrite to reflect tools/ directory structure
-- [ ] **Verify tool instructions** - Test all documented commands for accuracy/ verify + map workflow output + Git strategy intersections with `.logs/` and `./conversation_integration/` directories. 
+- [ ] **Verify tool instructions** - Test all documented commands for accuracy/ verify + map workflow output + Git strategy intersections with `.logs/` and `./conversation_integration/` directories.
 - [ ] **Remove cache artifacts from root directory / leave in `./tools/` directory** - Delete .mypy_cache directories in root / verify uv python virtual environment is working in `./tools/`.
 - [ ] **Final directory consolidation** - Move remaining root files to appropriate subdirectories / find way to visually group baseline directories / session-specific directories / APM directories / etc. Clearly map and delineate folders/files to appropriate git branches/workflows.
 - [ ] **Clean-up and Organize `./_organization/` directory** - Create logical directory structure,- archive or reference old tasks (de-emphasized, superseded),emphasize or forward position important organizational docs or target directory structures/workflows such as the metacognitive priming outputs.
