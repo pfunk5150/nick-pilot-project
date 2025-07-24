@@ -3,7 +3,7 @@ import os
 import re
 
 
-def get_file_extension_from_mime(mime_type):
+def get_file_extension_from_mime(mime_type: str) -> str:
     """Maps a MIME type to a file extension."""
     mapping = {
         "application/vnd.ant.mermaid": ".mermaid",
@@ -15,20 +15,22 @@ def get_file_extension_from_mime(mime_type):
     return mapping.get(mime_type, ".txt")
 
 
-def sanitize_filename(filename):
+def sanitize_filename(filename: str) -> str:
     """Removes characters that are invalid in filenames."""
     # Emojis and other special characters are removed or replaced
     filename = re.sub(r"[📄✨]", "", filename).strip()
     return re.sub(r'[<>:"/\\|?*]', "_", filename)
 
 
-def build_artifact_repository(file_path, output_dir="claude_export_repository"):
+def build_artifact_repository(
+    file_path: str, output_dir: str = "claude_export_repository"
+) -> str:
     """
     Parses a Claude.ai conversation JSON file, creates a repository of artifacts,
     and generates a formatted Markdown log with links to these artifacts.
     """
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             data = json.load(f)
     except FileNotFoundError:
         return f"Error: The file '{file_path}' was not found."
@@ -193,14 +195,19 @@ def build_artifact_repository(file_path, output_dir="claude_export_repository"):
 
 
 if __name__ == "__main__":
-    JSON_FILE = "claude_conversation.json"
-    # Define the main directory for the exported repository
-    OUTPUT_DIRECTORY = "claude_export_repository"
+    # Corrected path: JSON file should be in logs/claude_conversation_exporter/ directory
+    JSON_FILE = "../logs/claude_conversation_exporter/claude_conversation.json"
+    # Corrected path: Output should go to logs/claude_export_repository/ directory
+    OUTPUT_DIRECTORY = "../logs/claude_export_repository"
 
     if not os.path.exists(JSON_FILE):
         print(
-            f"Error: '{JSON_FILE}' not found. Please place the script in the same directory as your JSON file."
+            f"Error: '{JSON_FILE}' not found. Please ensure the exported JSON file is in the logs/claude_conversation_exporter/ directory."
         )
+        print("Expected workflow:")
+        print("1. Export conversation using claude_export_script.js")
+        print("2. Move downloaded files to logs/claude_conversation_exporter/")
+        print("3. Run 'python main.py' from tools/ directory")
     else:
         print("Processing conversation and building artifact repository...")
         # Build the repository and get the formatted log content
@@ -209,8 +216,8 @@ if __name__ == "__main__":
         # Save the main Markdown log file inside the repository directory
         print("Saving conversation log...")
         output_filename = os.path.join(OUTPUT_DIRECTORY, "conversation_log.md")
-        with open(output_filename, "w", encoding="utf-8") as f:
-            f.write(FORMATTED_TEXT)
+        with open(output_filename, "w", encoding="utf-8") as output_file:
+            output_file.write(FORMATTED_TEXT)
         print(
             f"✅ Conversation repository successfully created in '{OUTPUT_DIRECTORY}'"
         )
