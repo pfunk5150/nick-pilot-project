@@ -1,0 +1,101 @@
+// =========================================================
+// OPTIMIZED PYTHON CONFIGURATION
+// =========================================================
+// Python Language-Specific Settings
+"[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.ruff": "explicit",
+        "source.organizeImports.ruff": "explicit"
+    },
+    "editor.semanticHighlighting.enabled": true,
+    "editor.rulers": [
+        88,
+        120
+    ],
+    "editor.wordWrap": "off"
+},
+// Python Environment & Execution
+"python.defaultInterpreterPath": "python",
+"python.envFile": "${workspaceFolder}/.env",
+"python.terminal.activateEnvironment": true,
+"python.terminal.executeInFileDir": true,
+"python.terminal.shellIntegration.enabled": true,
+"python.terminal.activateEnvInCurrentTerminal": true,
+"python.packageManager": "custom",
+"python.customPipExecutablePath": "uv",
+// Python Analysis Settings
+"python.analysis.diagnosticMode": "workspace",
+"python.analysis.typeCheckingMode": "basic",
+"python.analysis.autoImportCompletions": true,
+"python.analysis.fixAll": [
+    "source.unusedImports"
+],
+// =========================================================
+// RUFF CONFIGURATION - Primary Linter & Formatter
+// =========================================================
+// Core Ruff Settings
+"ruff.enable": true,
+"ruff.nativeServer": "on",
+"ruff.importStrategy": "fromEnvironment",
+"ruff.showNotifications": "onError",
+// Line Length & Formatting
+"ruff.lineLength": 88,
+"ruff.fixAll": true,
+"ruff.organizeImports": true,
+// Linting Configuration
+"ruff.lint.enable": true,
+"ruff.lint.select": [
+    "E", // pycodestyle errors
+    "W", // pycodestyle warnings
+    "F", // pyflakes
+    "I", // isort
+    "N", // pep8-naming
+    "UP", // pyupgrade
+    "B", // flake8-bugbear
+    "C4", // flake8-comprehensions
+    "SIM", // flake8-simplify
+    "TCH", // flake8-type-checking
+    "PERF" // perflint
+],
+"ruff.lint.ignore": [
+    "E501", // Line too long (handled by formatter)
+    "W191", // Indentation contains tabs (handled by formatter)
+    "W503" // Line break before binary operator (not PEP 8 compliant)
+],
+// Code Actions
+"ruff.codeAction.fixViolation.enable": true,
+"ruff.codeAction.disableRuleComment.enable": true,
+// Logging & Debugging
+"ruff.logLevel": "info",
+"ruff.trace.server": "off",
+// =========================================================
+// MYPY CONFIGURATION - Type Checking
+// =========================================================
+"mypy-type-checker.args": [
+    "--ignore-missing-imports",
+    "--show-error-codes",
+    "--no-strict-optional",
+    "--warn-return-any",
+    "--warn-unused-configs",
+    "--disallow-untyped-defs"
+],
+"mypy-type-checker.importStrategy": "useBundled",
+"mypy-type-checker.showNotifications": "onError",
+// =========================================================
+// PYLINT CONFIGURATION - Additional Static Analysis
+// =========================================================
+"pylint.args": [
+    "--disable=C0111,R0903,C0103,W0613,R0913,R0902,C0415",
+    "--max-line-length=88",
+    "--good-names=i,j,k,ex,Run,_,id,pk",
+    "--const-naming-style=UPPER_CASE",
+    "--variable-naming-style=snake_case",
+    "--function-naming-style=snake_case",
+    "--method-naming-style=snake_case",
+    "--class-naming-style=PascalCase",
+    "--module-naming-style=snake_case"
+],
+"pylint.importStrategy": "useBundled",
+"pylint.showNotifications": "onError",
