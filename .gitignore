@@ -3,16 +3,7 @@
 # =============================================================================
 
 # -----------------------------------------------------------------------------
-# Session & Conversation Logs (Too large for Git)
-# -----------------------------------------------------------------------------
-logs/claude_conversation.json
-logs/claude_conversation.md
-logs/claude_export_repository/conversation_log.md
-logs/model_sessions_log.md
-logs/model_thought_process_log.md
-
-# -----------------------------------------------------------------------------
-# Temporary Session Files
+# Temporary & Working Files
 # -----------------------------------------------------------------------------
 logs/temp/
 logs/working/
@@ -22,15 +13,22 @@ session_*.json
 conversation_*.json
 
 # -----------------------------------------------------------------------------
-# AI-Generated Artifacts (Managed separately)
+# Binary & Large Files Only (Preserve text artifacts)
 # -----------------------------------------------------------------------------
-# Note: We'll selectively track approved artifacts via git add -f
-logs/claude_export_repository/generated_artifacts/
-logs/claude_export_repository/extracted_files/
-logs/claude_export_repository/user_uploads/
+# Binary uploads that don't belong in git
+logs/claude_export_repository/user_uploads/*.pdf
+logs/claude_export_repository/user_uploads/*.zip
+logs/claude_export_repository/user_uploads/*.xlsx
+logs/claude_export_repository/user_uploads/*.rar
+logs/claude_export_repository/user_uploads/*.7z
+
+# Exceptions: Keep critical reference documents under 10MB
+!context_files/**/*.pdf
+!context_files/**/*.xlsx
+!artifacts/**/*.pdf
 
 # -----------------------------------------------------------------------------
-# Experimental Scripts (Move to separate branch)
+# Experimental Scripts (Move to separate branch when ready)
 # -----------------------------------------------------------------------------
 chat_conversion_script.py
 chat_converter.py
@@ -84,19 +82,6 @@ venv.bak/
 *~
 .DS_Store
 Thumbs.db
-
-# -----------------------------------------------------------------------------
-# Large Binary Files
-# -----------------------------------------------------------------------------
-*.pdf
-*.xlsx
-*.zip
-*.rar
-*.7z
-
-# Exception: Keep critical reference documents
-!context_files/**/*.pdf
-!context_files/**/*.xlsx
 
 # -----------------------------------------------------------------------------
 # Output & Cache Directories
