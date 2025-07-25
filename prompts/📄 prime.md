@@ -36,6 +36,7 @@ This PRIME command sequence bootstraps system awareness.
 - handbooks/engagement_playbook.md
 - handbooks/operations_handbook.md
 - handbooks/engagement_control_panel.md
+- handbooks/ai_engagement_system_master_fied_ops_guide.md
 - handbooks/master_meta_architecture_diagrams.md
 
 ### 3️⃣ CLIENT CONTEXT FILES

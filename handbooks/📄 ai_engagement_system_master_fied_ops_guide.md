@@ -38,15 +38,15 @@ Hybrid AI Consulting Engagement Orchestration System (Smart Chain + Human-in-the
 
 ## 📂 **DIRECTORY QUICK MAP**
 
-| Folder            | Purpose                                        |
-|-------------------|------------------------------------------------|
-| `/context_files/` | Client-provided source files                   |
-| `/meta/`          | Immutable knowledge scaffolding                |
-| `/prompts/`       | Prime commands and Kickoff interface scaffolds |
-| `/handbooks/`     | Operational playbooks and control manuals      |
-| `/artifacts/`     | Generated diagrams, visuals, and mappings      |
-| `/logs/`          | Model reasoning + open question logging        |
-| `/outputs/`       | Approved deliverables                          |
+| Folder            | Purpose                                                   |
+|-------------------|-----------------------------------------------------------|
+| `/context_files/` | Client-provided source files                              |
+| `/meta/`          | Immutable knowledge scaffolding                           |
+| `/prompts/`       | Prime commands and Kickoff interface scaffolds            |
+| `/handbooks/`     | Operational playbooks and control manuals                 |
+| `/artifacts/`     | Generated diagrams, visuals, and mappings                 |
+| `/logs/`          | Chat session logs + export content + context preservation |
+| `/outputs/`       | Approved deliverables                                     |
 
 ---
 
@@ -137,4 +137,3 @@ Hybrid AI Consulting Engagement Orchestration System (Smart Chain + Human-in-the
 **Your AI Engagement System is fully operational, fully auditable, and fully extensible.**
 
 ---
-
