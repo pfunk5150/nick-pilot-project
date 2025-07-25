@@ -50,6 +50,7 @@ This repository contains the full scaffolding, orchestration, and operational fr
     - first_task_script.md (for the model to understand the project)
 
 /handbooks
+    - ai_engagement_system_master_fied_ops_guide.md
     - engagement_playbook_v1.0.1.md
     - operations_handbook_v1.0.1.md
     - engagement_control_panel_v1.0.1.md
