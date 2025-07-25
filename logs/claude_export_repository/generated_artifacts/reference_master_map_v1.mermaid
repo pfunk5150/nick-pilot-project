@@ -1,0 +1,73 @@
+graph TD
+    %% === Core Entities ===
+    Nick[Nick Maroules<br/>BDO Partner]
+    Article[2-3 Page Article<br/>ILPA Templates]
+    CFO_Audience[PE CFOs &<br/>Finance Executives]
+
+    %% === Strategic Layer ===
+    Nick --> ProjectRequest[Project Request Email]
+    ProjectRequest --> ArticleGoal{Article Objectives}
+    ArticleGoal --> Article
+    Article --> CFO_Audience
+
+    %% === Content Sources ===
+    ILPA_Official[ILPA Official<br/>Documentation] --> ContentDev[Content Development]
+    BDO_Style[BDO Style<br/>Reference] --> ContentDev
+    Research[Background<br/>Research] --> ContentDev
+    ContentDev --> Article
+
+    %% === ILPA Documentation Breakdown ===
+    ILPA_Official --> ReportingDocs[Reporting Template<br/>Documentation]
+    ILPA_Official --> PerformanceDocs[Performance Template<br/>Documentation]
+    ILPA_Official --> CombinedOverview[Combined Overview<br/>& FAQs]
+
+    ReportingDocs --> RT_Guidance[RT Suggested Guidance]
+    ReportingDocs --> RT_Definitions[RT Definitions]
+    ReportingDocs --> RT_Changes[RT Changes Overview]
+    ReportingDocs --> RT_Template[RT v2.0 Spreadsheet]
+
+    PerformanceDocs --> PT_Guidance[PT Suggested Guidance]
+    PerformanceDocs --> PT_Definitions[PT Definitions]
+    PerformanceDocs --> PT_Methodology[PT Methodology Comparison]
+    PerformanceDocs --> PT_Template[PT Spreadsheet & Samples]
+
+    %% === Style & Strategy References ===
+    BDO_Style --> SampleArticle[Asset Mgmt Insights<br/>BDC Article]
+    Nick --> PersonalContext[Relationship Context<br/>& Strategic Goals]
+    
+    %% === Research Layer ===
+    Research --> TimelineContext[ILPA Development<br/>Timeline Research]
+    Research --> WebsiteRefs[ILPA Website<br/>References]
+
+    %% === AI Orchestration Layer ===
+    AIFramework[AI Orchestration<br/>Framework] --> TaskExecution[Smart Chain<br/>Task Execution]
+    TaskExecution --> Article
+    
+    ProjectBrief[Project Brief] --> AIFramework
+    ModelPrompts[Model Guidance<br/>& Prompts] --> AIFramework
+    EngagementPlaybook[Engagement<br/>Playbook] --> AIFramework
+
+    %% === Article Development Flow ===
+    ContentDev --> ArticleStructure{Article Structure<br/>Planning}
+    ArticleStructure --> Outline[Article Outline]
+    Outline --> Draft[Article Draft]
+    Draft --> Review[Nick Review]
+    Review --> FinalArticle[Final Article]
+
+    %% === Quality Assurance ===
+    TechnicalAccuracy[Technical<br/>Accuracy Check] --> Article
+    AudienceRelevance[CFO Audience<br/>Relevance Check] --> Article
+    BDOBrand[BDO Brand<br/>Alignment Check] --> Article
+
+    %% === Styling ===
+    classDef clientNode fill:#e1f5fe
+    classDef ilpaNode fill:#f3e5f5
+    classDef strategyNode fill:#e8f5e8
+    classDef processNode fill:#fff3e0
+    classDef outputNode fill:#ffebee
+
+    class Nick,ProjectRequest,PersonalContext,SampleArticle clientNode
+    class ILPA_Official,ReportingDocs,PerformanceDocs,CombinedOverview,RT_Guidance,RT_Definitions,RT_Changes,RT_Template,PT_Guidance,PT_Definitions,PT_Methodology,PT_Template ilpaNode
+    class ArticleGoal,ContentDev,ArticleStructure,TechnicalAccuracy,AudienceRelevance,BDOBrand strategyNode
+    class AIFramework,TaskExecution,ProjectBrief,ModelPrompts,EngagementPlaybook processNode
+    class Article,Outline,Draft,FinalArticle outputNode
