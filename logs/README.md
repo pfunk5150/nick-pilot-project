@@ -20,10 +20,7 @@ logs/
 │   ├── user_uploads/              # Session input materials
 │   └── extracted_files/           # Reconstructed project context
 ├── archived-sessions/             # Historical session artifacts
-├── mermaid_gitflows/             # Git workflow visualizations
-├── main.py                       # Repository builder entry point
-├── claude_repository_builder.py  # Export processing engine
-└── pyproject.toml               # Python project configuration
+
 ```
 
 ---
@@ -40,7 +37,7 @@ logs/
 
 ### Step 2: Repository Building
 1. **Place Downloads:** Move exported files to `logs/claude_conversation_exporter/`
-2. **Execute Builder:** Run `python main.py` from logs directory
+2. **Execute Builder:** Run `python main.py` from tools directory
 3. **Process Export:** Script parses JSON and creates structured repository
 
 ### Step 3: Context Bridge Integration
@@ -54,7 +51,7 @@ logs/
 
 ### `claude_repository_builder.py`
 **Purpose:** Parse Claude export JSON and create organized repository structure
-**Execution:** Via `main.py` wrapper using UV virtual environment
+**Execution:** Via `main.py` wrapper using UV virtual environment in `../tools/` directory
 
 **Key Functions:**
 - **JSON Parsing:** Extract conversation metadata and structure
@@ -105,10 +102,10 @@ Located in `archived-sessions/` - Historical conversation exports and analysis a
 
 2. **Repository Building:**
    ```powershell
-   cd logs
+   cd tools
    python main.py
    # Processes claude_conversation.json
-   # Creates claude_export_repository/
+   # Creates logs/claude_export_repository/
    ```
 
 3. **Context Bridge Integration:**
@@ -129,6 +126,8 @@ uv sync        # Install dependencies from pyproject.toml
 ## 🔧 Technical Details
 
 ### Export Script (`claude_export_script.js`)
+**Purpose:** Extract conversation content from Claude.ai browser interface
+- Located in `logs/claude_conversation_exporter/` directory
 - **Size:** 16KB, 405 lines
 - **Features:**
   - Automatic conversation/organization ID detection
@@ -137,6 +136,8 @@ uv sync        # Install dependencies from pyproject.toml
   - Attachment and artifact preservation
 
 ### Repository Builder (`claude_repository_builder.py`)
+**Purpose:** Parse Claude export JSON and create organized repository structure
+- Located in `../tools/` directory
 - **Size:** 9.6KB, 218 lines
 - **Dependencies:** Standard library only (json, os, datetime)
 - **Processing:**
