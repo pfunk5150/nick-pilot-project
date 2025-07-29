@@ -222,3 +222,73 @@ uv run python claude_repository_builder.py ../logs/claude_conversation_exporter/
 ---
 
 **🚀 Ready for Background Agent Assignment**
+
+<!-- CRITICAL PRIORITY ISSUE -->
+## 🚨 **CRITICAL: Missing Artifact File Generation**
+
+**URGENT:** The current enhanced script (`tools/claude_repository_builder.py`) only generates `conversation_log.md` but has LOST the individual artifact file extraction functionality!
+
+### **Missing Functionality:**
+- Individual artifact files (`.md`, `.mermaid`, `.json`) are NOT being created
+- `generated_artifacts/` directory is NOT being populated
+- Only the enhanced `conversation_log.md` is generated
+
+### **Required Fix:**
+Merge the artifact extraction code from `tools/claude_repository_builder_v1_backup_2025-01-26.py` (lines 110-128) into the enhanced version to restore full functionality.
+
+**Reference Code Pattern:**
+```python
+artifact_path = os.path.join(output_dir, "generated_artifacts")
+os.makedirs(artifact_path, exist_ok=True)
+full_path = os.path.join(artifact_path, filename)
+with open(full_path, "w", encoding="utf-8") as af:
+    af.write(artifact_content)
+```
+
+## 🚨 **CRITICAL: Missing Extracted Files Directory**
+
+**URGENT:** The current enhanced script is also missing the `extracted_files/` directory creation and population functionality!
+
+### **Missing Functionality:**
+- `extracted_files/` directory is NOT being created
+- Context files and engagement research materials are NOT being extracted
+- File attachment processing is incomplete
+
+### **Expected Structure:**
+```
+logs/claude_export_repository/
+└── extracted_files/
+    └── context_files/
+        └── engagement_research/
+            ├── ilpa_how_we_got_here.md
+        ├── nick_project_request_ilpa_article_context.md
+        ├── nick_sample_article_reference_email.md
+```
+
+### **Required Fix:**
+Restore the file attachment extraction logic from the original script to populate the `extracted_files/` directory with conversation attachments and referenced files.
+
+## 🚨 **CRITICAL: Missing User Uploads Directory**
+
+**URGENT:** The current enhanced script is missing the `user_uploads/` directory creation for user-provided files!
+
+### **Missing Functionality:**
+- `user_uploads/` directory is NOT being created
+- User-uploaded files are NOT being extracted and saved
+- Attachment processing for user files is incomplete
+
+### **Expected Structure:**
+```
+logs/claude_export_repository/
+└── user_uploads/
+    ├── Open_Questions_Log.md
+    ├── prime.md
+    └── [other user-uploaded files]
+```
+
+### **Required Fix:**
+Implement user attachment processing to extract and save user-uploaded files to the `user_uploads/` directory. Reference the original script's attachment handling logic.
+
+---
+
+<!-- Original handoff content follows -->
