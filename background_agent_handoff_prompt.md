@@ -257,7 +257,9 @@ Use this meta-question as your **guiding optimization principle** for every stru
 
 **🚀 Ready for Background Agent Assignment**
 
-<!-- CRITICAL PRIORITY ISSUE -->
+<critical_issues priority="urgent">
+
+<missing_artifact_generation severity="blocking">
 ## 🚨 **CRITICAL: Missing Artifact File Generation**
 
 **URGENT:** The current enhanced script (`tools/claude_repository_builder.py`) only generates `conversation_log.md` but has LOST the individual artifact file extraction functionality!
@@ -278,7 +280,9 @@ full_path = os.path.join(artifact_path, filename)
 with open(full_path, "w", encoding="utf-8") as af:
     af.write(artifact_content)
 ```
+</missing_artifact_generation>
 
+<missing_extracted_files severity="blocking">
 ## 🚨 **CRITICAL: Missing Extracted Files Directory**
 
 **URGENT:** The current enhanced script is also missing the `extracted_files/` directory creation and population functionality!
@@ -301,7 +305,9 @@ logs/claude_export_repository/
 
 ### **Required Fix:**
 Restore the file attachment extraction logic from the original script to populate the `extracted_files/` directory with conversation attachments and referenced files.
+</missing_extracted_files>
 
+<missing_user_uploads severity="blocking">
 ## 🚨 **CRITICAL: Missing User Uploads Directory**
 
 **URGENT:** The current enhanced script is missing the `user_uploads/` directory creation for user-provided files!
@@ -322,6 +328,9 @@ logs/claude_export_repository/
 
 ### **Required Fix:**
 Implement user attachment processing to extract and save user-uploaded files to the `user_uploads/` directory. Reference the original script's attachment handling logic.
+</missing_user_uploads>
+
+</critical_issues>
 
 ---
 
