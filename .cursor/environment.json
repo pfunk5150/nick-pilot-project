@@ -1,13 +1,13 @@
 {
-    "install": "uv sync",
+    "install": "python3 --version",
     "terminals": [
         {
             "name": "Python Development",
-            "command": "cd tools && uv run python --version"
+            "command": "cd tools && python3 --version"
         },
         {
             "name": "Repository Builder Testing",
-            "command": "cd tools && uv run python claude_repository_builder.py"
+            "command": "cd tools && python3 claude_repository_builder.py"
         }
     ]
 }
