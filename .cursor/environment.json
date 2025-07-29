@@ -1,13 +1,15 @@
 {
-    "install": "python3 --version",
+    "install": "python3 --version && cd tools && python3 -c 'import claude_repository_builder; print(\"✅ Repository builder module ready\")'",
     "terminals": [
         {
-            "name": "Python Development",
-            "command": "cd tools && python3 --version"
+            "name": "Repository Builder Testing",
+            "command": "cd tools && echo '🚀 Ready to test claude_repository_builder.py' && bash",
+            "description": "Testing environment for the repository builder script"
         },
         {
-            "name": "Repository Builder Testing",
-            "command": "cd tools && python3 claude_repository_builder.py"
+            "name": "Output Monitoring",
+            "command": "cd logs/claude_export_repository && echo '📁 Monitoring output directory' && bash",
+            "description": "Monitor generated files and test results"
         }
     ]
 }
