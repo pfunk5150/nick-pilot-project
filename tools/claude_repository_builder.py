@@ -445,7 +445,7 @@ def process_thinking_block(thinking_content: str, config: EnhancementConfig, rel
 
 
 def process_single_tool_for_nesting(tool_block: dict, config: EnhancementConfig) -> str:
-    """Process a single tool block for nesting within thinking blocks"""
+    """Process a single tool block for nesting within thinking blocks with artifact support"""
     if tool_block.get("type") != "tool_use":
         return ""
     
@@ -454,12 +454,28 @@ def process_single_tool_for_nesting(tool_block: dict, config: EnhancementConfig)
     
     summary = generate_tool_summary(tool_name, tool_input, 1)
     
-    # Simplified tool content for nesting
-    content_parts = []
-    if tool_input:
-        content_parts.append(f"**Parameters:** {json.dumps(tool_input, indent=2)}")
-    
-    tool_content = "\n".join(content_parts) if content_parts else "Tool executed"
+    # Special handling for artifacts
+    if tool_name == "artifacts" and tool_input and "content" in tool_input:
+
+        artifact_content = ArtifactContent(
+            artifact_id=tool_input.get("id", "unknown_artifact"),
+            title=tool_input.get("title", "Untitled Artifact"),
+            content_type=tool_input.get("type", "text/plain"),
+            content=tool_input.get("content", ""),
+            command=tool_input.get("command", "create"),
+            version_uuid=tool_input.get("version_uuid", ""),
+        )
+        
+        # Format artifact content natively
+        formatted_artifact = format_artifact_content(artifact_content, config, "")
+        tool_content = formatted_artifact
+
+    else:
+        # Simplified tool content for non-artifacts
+        content_parts = []
+        if tool_input:
+            content_parts.append(f"**Parameters:** {json.dumps(tool_input, indent=2)}")
+        tool_content = "\n".join(content_parts) if content_parts else "Tool executed"
     
     return f"  <tools>\n    <details><summary>{summary}</summary>\n\n{tool_content}\n\n    </details>\n  </tools>"
 
@@ -498,9 +514,12 @@ def process_tool_sequence(tool_blocks: List[dict], processor: ConversationProces
 
         tool_name = tool_use.get("name", "unknown_tool")
         tool_input = tool_use.get("input", {})
+        
+
 
         # Enhanced artifact handling with individual file creation
-        if tool_name == "artifacts" and tool_input:
+        if tool_name == "artifacts" and tool_input and "content" in tool_input:
+
             artifact_content = ArtifactContent(
                 artifact_id=tool_input.get("id", "unknown_artifact"),
                 title=tool_input.get("title", "Untitled Artifact"),
@@ -537,6 +556,7 @@ def process_tool_sequence(tool_blocks: List[dict], processor: ConversationProces
                 formatted_artifact = format_artifact_content(artifact_content, config, artifact_file_path)
                 wrapped_tool = wrap_with_details(summary, formatted_artifact, "tools")
                 output.append(wrapped_tool)
+
             else:
                 output.append(f"\n**Artifact: `{artifact_content.title}`**")
                 if artifact_file_path:
@@ -842,6 +862,7 @@ def build_artifact_repository_enhanced(
         processor.current_line += 1
 
         sender = "👤 **Human**" if message["sender"] == "human" else "🤖 **Claude**"
+
         output.append(f"### {sender}")
 
         # RESTORED: Handle user attachments
@@ -884,6 +905,7 @@ def build_artifact_repository_enhanced(
                     if config.enable_chronological_nesting:
                         # Simple heuristic: tools immediately following thinking
                         related_tools = [tb for tb in tool_blocks if tb.get("type") == "tool_use"][:2]
+
                     
                     processed_thinking = process_thinking_block(thinking_content, config, related_tools)
                     if processed_thinking:
