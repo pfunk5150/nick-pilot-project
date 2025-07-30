@@ -639,9 +639,26 @@ def process_tool_result(result_block: dict, processor: ConversationProcessor, ou
                         if processor.config.generate_individual_artifact_files and output_dir:
                             artifact_file_path = create_individual_artifact_file(artifact, output_dir)
 
-                        # Format artifact content with file link
-                        formatted_artifact = format_artifact_content(artifact, processor.config, artifact_file_path)
-                        processed_items.append(formatted_artifact)
+                        # Format artifact content WITHOUT collapsible details to avoid nesting conflicts
+                        metadata_parts = [
+                            f"**Artifact:** `{artifact.artifact_id}`",
+                            f"**Title:** {artifact.title}",
+                            f"**Type:** {artifact.content_type}"
+                        ]
+                        
+                        if artifact_file_path:
+                            metadata_parts.append(f"**File:** [{os.path.basename(artifact_file_path)}]({artifact_file_path})")
+                        
+                        metadata = " • ".join(metadata_parts)
+                        
+                        # Use simple format to avoid nested details tags
+                        if artifact.content_type == "text/markdown" and processor.config.native_markdown_artifacts:
+                            simple_artifact = f"{metadata}\n\n{artifact.content}"
+                        else:
+                            lang_indicator = artifact.content_type.split("/")[-1] if "/" in artifact.content_type else "text"
+                            simple_artifact = f"{metadata}\n\n```{lang_indicator}\n{artifact.content}\n```"
+                        
+                        processed_items.append(simple_artifact)
                         continue
 
                 # Enhanced file extraction with individual file creation
@@ -685,8 +702,27 @@ def process_tool_result(result_block: dict, processor: ConversationProcessor, ou
                         processed_items.append(f"**File:** `{file_path}` *(content previously shown)*{link_text}")
                     else:
                         if extracted_file_path:
-                            processed_items.append(f"**Extracted File:** [{file_path}]({extracted_file_path})")
-                        processed_items.append(text_content)
+                            processed_items.append(f"**Extracted File:** [`{file_path}`]({extracted_file_path})")
+                        
+                        # Format file content safely - avoid HTML conflicts
+                        if len(lines) > 1:
+                            # Extract content from potential code block
+                            content_to_show = lines[1]
+                            code_match = re.search(r"```[a-zA-Z]*\n(.*?)\n```", content_to_show, re.DOTALL)
+                            if code_match:
+                                file_content = code_match.group(1)
+                                # Determine file type from extension
+                                if file_path.endswith('.md'):
+                                    processed_items.append(f"`{file_path}`\n```md\n{file_content}\n```")
+                                elif file_path.endswith('.mermaid'):
+                                    processed_items.append(f"`{file_path}`\n```mermaid\n{file_content}\n```")
+                                else:
+                                    processed_items.append(f"`{file_path}`\n```\n{file_content}\n```")
+                            else:
+                                # No code block wrapper, show as plain text
+                                processed_items.append(f"`{file_path}`\n```\n{content_to_show}\n```")
+                        else:
+                            processed_items.append(f"`{file_path}`")
                 else:
                     # Check for directory trees
                     if detect_directory_tree(text_content):

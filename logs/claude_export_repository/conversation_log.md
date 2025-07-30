@@ -153,9 +153,9 @@ Finally, completing the TAXONOMY & KNOWLEDGE MAPS section:
 ```
 
 **Results:**
-**Extracted File:** [/handbooks/engagement_playbook.md](extracted_files/handbooks/engagement_playbook.md)
+**Extracted File:** [`/handbooks/engagement_playbook.md`](extracted_files/handbooks/engagement_playbook.md)
 
-/handbooks/engagement_playbook.md
+`/handbooks/engagement_playbook.md`
 ```md
 AI Consulting Engagement Playbook — v1.0.1
 Nick Pilot Project
@@ -213,52 +213,6 @@ Model Behavior:
 
 Task Chain Syntax:
 
-```txt
-Smart Chain: {Task Name}
-
-Step 1 — {Action}
-Step 2 — {Action}
-Step 3 — {Action}
-...
-```
-
----
-
-PART 4 — ARTIFACT TAGGING & VERSIONING SYSTEM
-
-Artifact Naming:
-
-* Use clear artifact ID, version, and timestamp.
-* Tag new versions as: v1.0, v1.1, etc.
-* Mark artifacts as "Pending User Approval" when awaiting review.
-* Promote artifacts to permanent knowledge base upon approval.
-
----
-
-PART 5 — SAMPLE FIRST RUN SEQUENCE
-
-1. Apply model initiation prompt (v1.0.1)
-2. Load all files.
-3. Execute First Task Script:
-
-   * Generate Understanding Summary
-   * Build Reference Taxonomy
-   * Create Mermaid File Map
-   * Log open questions
-   * Propose initial visual knowledge representation plan
-
----
-
-PART 6 — PLAYBOOK PRINCIPLES FOR FUTURE CLIENT WORK
-
-* Build reusable scaffolding for each client
-* Maintain transparent consulting discipline
-* Generate visual knowledge maps early
-* Allow model emergent reasoning to surface new deliverables
-* Propose artifacts that exceed client expectations
-* Build internal audit trails for all reasoning steps
-* Control autonomy through human review checkpoints
-* Allow model to self-correct via diagnostics & coaching
 ```
 
 Directory Tree Structure
@@ -321,9 +275,9 @@ Directory Tree Structure
     └── README.md
 ```
 
-**Extracted File:** [/meta/model_initiation_prompt.md](extracted_files/meta/model_initiation_prompt.md)
+**Extracted File:** [`/meta/model_initiation_prompt.md`](extracted_files/meta/model_initiation_prompt.md)
 
-/meta/model_initiation_prompt.md
+`/meta/model_initiation_prompt.md`
 ```md
 # Model Initiation Meta-Prompt (v1.0.1)
 
@@ -377,51 +331,7 @@ Execution Rules:
 
 Task Chain Syntax Pattern:
 
-```txt
-Smart Chain: {Task Name}
-
-Step 1 — {Action}
-Step 2 — {Action}
-Step 3 — {Action}
-Step 4 — {Action}
-...
-````
-
----
-
-HOTKEY GENERATION PROTOCOL:
-
-After each Smart Chain iteration, generate:
-
-* 5 scaffolded example hotkeys.
-* 5 emergent self-generated hotkeys.
-
-Syntax:
-
-```txt
-!{function name} [Input]: {brief description of function}
 ```
-
-Emergent hotkeys allow dynamic expansion of your internal functional planning.
-
----
-
-SELF-DIAGNOSTICS & COACHING:
-
-After each major Smart Chain completion, run self-diagnostic review across:
-
-* Task Alignment
-* Task Decomposition
-* Reasoning Depth
-* Ambiguity Management
-* Visual Planning
-* Hotkey Emergence
-* Transparency
-* Client Readiness
-* Latent Knowledge Activation
-* Engagement Progression
-
-Always generate self-coaching notes for your own improvement.
 
 README.md
 - `engagement_playbook.md`
@@ -460,9 +370,9 @@ If this is your first interaction, execute the `!_PRIME` command in chat to begi
 
 ```
 
-**Extracted File:** [/meta/model_guidance_instructions.md](extracted_files/meta/model_guidance_instructions.md)
+**Extracted File:** [`/meta/model_guidance_instructions.md`](extracted_files/meta/model_guidance_instructions.md)
 
-/meta/model_guidance_instructions.md
+`/meta/model_guidance_instructions.md`
 ```md
 Model Guidance Instructions
 
@@ -483,9 +393,10 @@ Critical Principle:
 The user remains your Engagement Director. You always collaborate transparently with user oversight.
 ```
 
-**Extracted File:** [/meta/reference_taxonomy.md](extracted_files/meta/reference_taxonomy.md)
+**Extracted File:** [`/meta/reference_taxonomy.md`](extracted_files/meta/reference_taxonomy.md)
 
-/meta/reference_taxonomy.md
+`/meta/reference_taxonomy.md`
+```
 ---
 
 ## 2️⃣ STRUCTURAL FUNCTION
@@ -558,68 +469,15 @@ The user remains your Engagement Director. You always collaborate transparently 
 - `kickoff_prompt_A.md / B.md`
 
 ```
+```
 
-**Extracted File:** [/meta/reference_master_map_diagram.md](extracted_files/meta/reference_master_map_diagram.md)
+**Extracted File:** [`/meta/reference_master_map_diagram.md`](extracted_files/meta/reference_master_map_diagram.md)
 
-/meta/reference_master_map_diagram.md
+`/meta/reference_master_map_diagram.md`
 ```md
 # Reference Master Map Diagram  
 > Visual Knowledge Architecture — Nick Pilot Project
 
-```mermaid
-graph TD
-
-%% === Top-Level Entities ===
-Nick[Nick Maroules]
-ProjectRequest[ILPA Article Request]
-EngagementTeam[Engagement Team]
-
-%% === Client Context ===
-Nick --> ProjectRequest
-ProjectRequest --> InitialEmail[nick_project_request_ilpa_article_context.md]
-ProjectRequest --> SampleEmail[nick_sample_article_reference_email.md]
-SampleEmail --> SamplePDF[Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf]
-
-%% === ILPA Website ===
-ProjectRequest --> ILPA_Web[ILPA Website Sources]
-ILPA_Web --> ILPA_Reporting_Link[ilpa_reporting_template_link.md]
-ILPA_Web --> ILPA_Performance_Link[ilpa_performance_template_link.md]
-
-%% === Zip Attachment Files ===
-ProjectRequest --> ZipFiles[Reference Materials (ZIP)]
-ZipFiles --> ReportingZIP[/reference_materials/reporting_template/...]
-ZipFiles --> PerformanceZIP[/reference_materials/performance_template/...]
-
-%% === Engagement-Sourced Research ===
-EngagementTeam --> ResearchFiles[engagement_research/ilpa_how_we_got_here.md]
-
-%% === Meta + Strategy ===
-MetaLayer --> Taxonomy[reference_taxonomy.md]
-MetaLayer --> MapDiagram[reference_master_map_diagram.md]
-MetaLayer --> Clarifications[open_questions_and_clarifications.md]
-
-Strategy --> Goals[implicit_goals_and_subtext.md]
-Strategy --> ArgumentPlan[article_argument_strategy.md]
-Strategy --> VisualPlan[visual_strategy_vkr_plan.md]
-
-%% === Prompt System ===
-Prompts --> Prime[prompts/prime.md]
-Prompts --> KickoffA[kickoff_prompt_A.md]
-Prompts --> KickoffB[kickoff_prompt_B.md]
-
-%% === Connections ===
-Nick --> ILPA_Web
-Nick --> ILPA_Committee[ILPA Committee]
-ILPA_Committee --> ProjectRequest
-
-ProjectRequest --> Prompts
-Strategy --> Prompts
-MetaLayer --> Prompts
-EngagementTeam --> MetaLayer
-EngagementTeam --> Strategy
-```
-
-(This diagram evolves as new files are processed and relationships mapped.)
 ```
 
 </details>
@@ -634,10 +492,10 @@ EngagementTeam --> Strategy
 ```
 
 **Results:**
-**Extracted File:** [/meta/implicit_goals_and_subtext.md](extracted_files/meta/implicit_goals_and_subtext.md)
+**Extracted File:** [`/meta/implicit_goals_and_subtext.md`](extracted_files/meta/implicit_goals_and_subtext.md)
 
-/meta/implicit_goals_and_subtext.md
-```
+`/meta/implicit_goals_and_subtext.md`
+```md
 Relationship Context:
 
 - Nick is a former peer, college friend, and close professional contact.
@@ -659,9 +517,9 @@ Strategic Objectives:
 
 **File:** `/meta/reference_master_map_diagram.md` *(content previously shown)* → [📄 View File](extracted_files/meta/reference_master_map_diagram.md)
 
-**Extracted File:** [/meta/project_brief.md](extracted_files/meta/project_brief.md)
+**Extracted File:** [`/meta/project_brief.md`](extracted_files/meta/project_brief.md)
 
-/meta/project_brief.md
+`/meta/project_brief.md`
 ```md
 Project Title: ILPA Templates Thought Leadership Article
 
@@ -700,9 +558,10 @@ Project Status: Active (Pilot engagement)
 
 **File:** `/meta/reference_taxonomy.md` *(content previously shown)* → [📄 View File](extracted_files/meta/reference_taxonomy.md)
 
-**Extracted File:** [/handbooks/operations_handbook.md](extracted_files/handbooks/operations_handbook.md)
+**Extracted File:** [`/handbooks/operations_handbook.md`](extracted_files/handbooks/operations_handbook.md)
 
-/handbooks/operations_handbook.md
+`/handbooks/operations_handbook.md`
+```
 ---
 
 SELF-DIAGNOSTICS LAYER:
@@ -755,6 +614,7 @@ OPERATING PRINCIPLES:
 * Auditability > Opacity
 * Consulting Discipline > Pure Text Generation
 ```
+```
 
 **File:** `/handbooks/operations_handbook.md` *(content previously shown)* → [📄 View File](extracted_files/handbooks/operations_handbook.md)
 
@@ -772,9 +632,9 @@ OPERATING PRINCIPLES:
 ```
 
 **Results:**
-**Extracted File:** [/handbooks/engagement_control_panel.md](extracted_files/handbooks/engagement_control_panel.md)
+**Extracted File:** [`/handbooks/engagement_control_panel.md`](extracted_files/handbooks/engagement_control_panel.md)
 
-/handbooks/engagement_control_panel.md
+`/handbooks/engagement_control_panel.md`
 ```md
 AI Engagement Control Panel — v1.0.1
 
@@ -834,96 +694,12 @@ FULL SMART CHAIN ORCHESTRATION LOGIC:
 
 3️⃣ Task Chain Syntax:
 
-```txt
-Smart Chain: {Task Name}
-
-Step 1 — {Action}
-Step 2 — {Action}
-Step 3 — {Action}
-...
 ```
 
-4️⃣ Output:
+**Extracted File:** [`/handbooks/master_meta_architecture_diagrams.md`](extracted_files/handbooks/master_meta_architecture_diagrams.md)
 
-* Produce concise outputs per task step.
-* Never silently skip task stages.
-* Always maintain full reasoning visibility.
-
----
-
-HOTKEY SCAFFOLD PROTOCOL:
-
-Post-Smart Chain:
-
-* Generate 5 scaffolded hotkeys + 5 emergent hotkeys.
-* Expand hotkey command space as engagement evolves.
-
-Syntax:
-
-```txt
-!{function name} [Input]: {brief description}
-```
-
-Example:
-
-```txt
-!run_taxonomy_review — Re-run taxonomy mapping
-!expand_vkr — Expand visual strategy
-!generate_outline — Generate article outline
-!flag_questions — Summarize open questions
-!propose_visuals — Propose visual artifacts
-```
-
----
-
-SELF-DIAGNOSTICS MODULE:
-
-After every Smart Chain, self-audit reasoning across:
-
-* Task Alignment
-* Decomposition Quality
-* Reasoning Depth
-* Ambiguity Management
-* Visual Planning
-* Hotkey Emergence
-* Transparency
-* Client Readiness
-* Latent Knowledge Activation
-* Engagement Progression
-
-Always produce self-coaching notes for performance improvement.
-
----
-
-SAFETY RULES:
-
-* The user remains Engagement Director.
-* You may auto-proceed only after visual plan is displayed.
-* Never hide reasoning weaknesses.
-* Never operate outside transparent auditability.
-
----
-
-EXECUTION MANTRA:
-
-> Task Networking → Hierarchical Planning → Smart Chain → Emergent Hotkeys → Transparent Work Product → Self-Diagnostics
-
----
-
-ACTIVATION COMPLETE — You may now operate at full orchestration capacity.
-
-```
-
-**Extracted File:** [/handbooks/master_meta_architecture_diagrams.md](extracted_files/handbooks/master_meta_architecture_diagrams.md)
-
-/handbooks/master_meta_architecture_diagrams.md
-# AI Engagement System — Master Meta-Architecture Diagrams v1.0
-
----
-
-## Level 1 — Top-Level System Architecture
-
-```mermaid
+`/handbooks/master_meta_architecture_diagrams.md`
+```md
 flowchart TD
 
 A(User/Consultant) --> B(AI Engagement Assistant)
@@ -941,113 +717,6 @@ F --> E
 G --> B
 H --> A
 I --> A
-```
-
----
-
-## Level 2 — Hybrid Interface Model (Mode Switching)
-
-```mermaid
-flowchart TD
-
-A(User) --> B(Hybrid Control Panel)
-
-B --> C1(GitHub / Cursor File-Editable Mode)
-B --> C2(AI Assistant Chat Project Mode)
-
-C1 --> D1(Direct File Workspace)
-C2 --> D2(Controlled Chat Thread Workspace)
-
-D1 --> E(Smart Chain Planner)
-D2 --> E
-
-E --> F(Mermaid Action Sequence)
-F --> G(Sequential Smart Chain Execution)
-G --> H(Artifact Generation)
-
-H --> I(User Approval Loop)
-I --> E
-```
-
----
-
-## Level 3 — Smart Chain Task Engine Flow
-
-```mermaid
-flowchart TD
-
-A(User Request) --> B(Task Plan Generation)
-B --> C(Mermaid Diagram Plan)
-C --> D(Smart Chain Execution)
-
-D --> D1(Task Step 1)
-D1 --> D2(Task Step 2)
-D2 --> D3(Task Step 3)
-D3 --> D4(...)
-
-D --> E(Open Questions Log)
-D --> F(Thought Process Log)
-D --> G(Hotkey Generation)
-D --> H(Self-Diagnostics Invocation)
-D --> I(Artifact Output)
-```
-
----
-
-## Level 4 — Self-Diagnostics & Coaching Layer
-
-```mermaid
-flowchart TD
-
-A(Smart Chain Complete) --> B(Self-Diagnostics Layer)
-
-B --> C(Task Alignment)
-B --> D(Task Decomposition)
-B --> E(Reasoning Depth)
-B --> F(Ambiguity Management)
-B --> G(Visual Planning)
-B --> H(Hotkey Emergence)
-B --> I(Client Readiness)
-B --> J(Transparency)
-B --> K(Latent Knowledge Activation)
-B --> L(Engagement Progression)
-
-B --> M(Self-Coaching Notes)
-M --> N(User Diagnostics Review)
-```
-
----
-
-## Level 5 — Hotkey Scaffold Generator
-
-```mermaid
-flowchart TD
-
-A(Task Chain Completion) --> B(Generate 5 Example Hotkeys)
-B --> C(Generate 5 Emergent Hotkeys)
-C --> D(Update Command Scaffold Block)
-D --> E(Display to User)
-E --> F(Feed Next Task Sequence)
-```
-
----
-
-## Level 6 — Full Engagement Lifecycle Flow
-
-```mermaid
-flowchart TD
-
-A(Project Initiation) --> B(Scaffolding Load)
-B --> C(Client Files Load)
-C --> D(Model Kickoff Prompt)
-D --> E(Smart Chain Initial Pass)
-E --> F(Artifacts Generated)
-F --> G(Self-Diagnostics Review)
-G --> H(User Review)
-H --> I(Artifact Promotion)
-I --> J(Next Task Planning Loop)
-J --> E
-```
 ```
 
 **File:** `/handbooks/engagement_playbook.md` *(content previously shown)* → [📄 View File](extracted_files/handbooks/engagement_playbook.md)
@@ -1123,9 +792,9 @@ J --> E
 ```
 
 **Results:**
-**Extracted File:** [/context_files/nick_sample_article_reference_email.md](extracted_files/context_files/nick_sample_article_reference_email.md)
+**Extracted File:** [`/context_files/nick_sample_article_reference_email.md`](extracted_files/context_files/nick_sample_article_reference_email.md)
 
-/context_files/nick_sample_article_reference_email.md
+`/context_files/nick_sample_article_reference_email.md`
 ```md
 From: Nick Maroules <nmaroules@bdo.com>
 Date: Fri, Jun 13, 2025 at 9:32 AM
@@ -1141,14 +810,16 @@ Nick Maroules
 Partner, Asset Management and Private Equity Funds
 ```
 
-**Extracted File:** [/context_files/Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf](extracted_files/context_files/Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf)
+**Extracted File:** [`/context_files/Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf`](extracted_files/context_files/Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf)
 
-/context_files/Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf
+`/context_files/Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf`
+```
 See PDF file `Asset_Mgmt_Insights_BDC_Regulatory_Reform_FINAL.pdf` attached in project knowledge.
+```
 
-**Extracted File:** [/context_files/nick_project_request_ilpa_article_context.md](extracted_files/context_files/nick_project_request_ilpa_article_context.md)
+**Extracted File:** [`/context_files/nick_project_request_ilpa_article_context.md`](extracted_files/context_files/nick_project_request_ilpa_article_context.md)
 
-/context_files/nick_project_request_ilpa_article_context.md
+`/context_files/nick_project_request_ilpa_article_context.md`
 ```md
 From: Nick Maroules <nmaroules@bdo.com>
 Date: Thu, Jun 12, 2025 at 2:33 PM CST
@@ -1215,9 +886,10 @@ People who know Asset Management, know BDO.
 ```
 
 **Results:**
-**Extracted File:** [/context_files/engagement_research/ilpa_how_we_got_here.md](extracted_files/context_files/engagement_research/ilpa_how_we_got_here.md)
+**Extracted File:** [`/context_files/engagement_research/ilpa_how_we_got_here.md`](extracted_files/context_files/engagement_research/ilpa_how_we_got_here.md)
 
-/context_files/engagement_research/ilpa_how_we_got_here.md
+`/context_files/engagement_research/ilpa_how_we_got_here.md`
+```
 The industry has a whole will benefit from these standards as it will provide LPs with greater transparency in a consistent format, reduce the volume of requests GPs receive for this key information, and provide Fund Administrators, Custodians and other key technology service providers with the framework to build into their systems to automate providing this data and support greater efficiency and more in-depth analysis by end-users. These new standards represent a meaningful step towards greater transparency and standardization for reporting and compliance, which are critical to supporting the alignment of interest and partnership between General Partners (GPs) and Limited Partners (LPs).
 
 Implementation and Beyond
@@ -1238,11 +910,12 @@ MORE:
 
 [ILPA Performance Template](https://ilpa.org/industry-guidance/templates-standards-model-documents/performance-template/)
 ```md
+```
 
 **File:** `/meta/reference_taxonomy.md` *(content previously shown)* → [📄 View File](extracted_files/meta/reference_taxonomy.md)
 
-/context/unzipped_ilpa_performance_template_files/
-```md
+`/context/unzipped_ilpa_performance_template_files/`
+```
 # 🔹 `/context/unzipped_ilpa_performance_template_files/`
 - `Combined-Overview-ILPA-Reporting-Template-and-Performance-Template.pdf` ✅ --> (see file attached in project knowledge)
 - `ILPA PT - Template Guides - Granular Methodology_v1.1.xlsx` ✅ --> (converted .csv file can be added later on request)
@@ -1256,8 +929,8 @@ MORE:
 
 **File:** `/meta/reference_master_map_diagram.md` *(content previously shown)* → [📄 View File](extracted_files/meta/reference_master_map_diagram.md)
 
-/context_files/unzipped_ilpa_reporting_template_files/
-```md
+`/context_files/unzipped_ilpa_reporting_template_files/`
+```
 # 🔹 `/context_files/unzipped_ilpa_reporting_template_files/`
 - `Combined-Overview-ILPA-Reporting-Template-and-Performance-Template.pdf` ✅ --> (see file attached in project knowledge)
 - `ILPA-Reporting-Template-v.-2.0-Suggested-Guidance.pdf` ✅ --> (see file attached in project knowledge)
@@ -1299,9 +972,9 @@ ILPA PERFORMANCE TEMPLATES
 
 **File:** `/meta/reference_taxonomy.md` *(content previously shown)* → [📄 View File](extracted_files/meta/reference_taxonomy.md)
 
-**Extracted File:** [/artifacts/diagrams_and_visuals.md](extracted_files/artifacts/diagrams_and_visuals.md)
+**Extracted File:** [`/artifacts/diagrams_and_visuals.md`](extracted_files/artifacts/diagrams_and_visuals.md)
 
-/artifacts/diagrams_and_visuals.md
+`/artifacts/diagrams_and_visuals.md`
 ```md
 # Diagrams and Visuals
 
@@ -1312,26 +985,12 @@ Note: Visuals may be included in multiple forms: text description, ASCII, Mermai
 
 **File:** `/handbooks/engagement_playbook.md` *(content previously shown)* → [📄 View File](extracted_files/handbooks/engagement_playbook.md)
 
-**Extracted File:** [/artifacts/mermaid_diagrams.md](extracted_files/artifacts/mermaid_diagrams.md)
+**Extracted File:** [`/artifacts/mermaid_diagrams.md`](extracted_files/artifacts/mermaid_diagrams.md)
 
-/artifacts/mermaid_diagrams.md
+`/artifacts/mermaid_diagrams.md`
 ```md
 # Mermaid Diagrams
 
-```mermaid
-flowchart TD
-    Nick --> Request
-    Request --> AI_Model
-    AI_Model --> Draft_Outline
-    Draft_Outline --> Review
-    Review --> Final_Article
-
-```mermaid
-[diagram_type]
-...
-```
-
-As the project progresses, additional diagrams will be added here to represent processes, decision trees, data structures, or conceptual frameworks.
 ```
 
 
