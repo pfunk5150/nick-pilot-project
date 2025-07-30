@@ -68,7 +68,7 @@ class EnhancementConfig:
     enable_folding: bool = True
     enable_deduplication: bool = True
     enable_summary_tables: bool = True
-    enable_chronological_nesting: bool = True  # EXPERIMENTAL
+    enable_chronological_nesting: bool = False  # EXPERIMENTAL - Disabled by default to avoid nesting issues
     native_markdown_artifacts: bool = True     # CRITICAL FIX
     
     # Content preservation (non-negotiable)
@@ -251,11 +251,9 @@ def format_artifact_content(artifact: ArtifactContent, config: EnhancementConfig
 
 
 def wrap_with_details(summary: str, content: str, tag: str = "details") -> str:
-    """Generate collapsible HTML sections with proper escaping"""
-    if tag == "details":
-        return f"<details><summary>{summary}</summary>\n\n{content}\n\n</details>"
-    else:
-        return f"<{tag}>\n  <details><summary>{summary}</summary>\n\n{content}\n\n  </details>\n</{tag}>"
+    """Generate collapsible HTML sections with standard HTML only"""
+    # Always use standard HTML details tags - no custom tags
+    return f"<details><summary>{summary}</summary>\n\n{content}\n\n</details>"
 
 
 def detect_directory_tree(text: str) -> bool:
@@ -437,9 +435,9 @@ def process_thinking_block(thinking_content: str, config: EnhancementConfig, rel
                 if tool_content:
                     content_with_tools += f"\n\n{tool_content}"
             
-            return wrap_with_details(summary, content_with_tools, "think")
+            return wrap_with_details(summary, content_with_tools)
         else:
-            return wrap_with_details(summary, thinking_content, "think")
+            return wrap_with_details(summary, thinking_content)
     else:
         return f"> **Thinking...**\n> {thinking_content.replace(chr(10), chr(10) + '> ')}"
 
@@ -477,7 +475,7 @@ def process_single_tool_for_nesting(tool_block: dict, config: EnhancementConfig)
             content_parts.append(f"**Parameters:** {json.dumps(tool_input, indent=2)}")
         tool_content = "\n".join(content_parts) if content_parts else "Tool executed"
     
-    return f"  <tools>\n    <details><summary>{summary}</summary>\n\n{tool_content}\n\n    </details>\n  </tools>"
+    return f"<details><summary>{summary}</summary>\n\n{tool_content}\n\n</details>"
 
 
 def process_tool_sequence(tool_blocks: List[dict], processor: ConversationProcessor, output_dir: str = "") -> str:
@@ -552,10 +550,9 @@ def process_tool_sequence(tool_blocks: List[dict], processor: ConversationProces
 
             # Generate formatted artifact with file link
             if config.enable_folding:
-                summary = generate_tool_summary(tool_name, tool_input, processor.tool_usage[tool_name].usage_count)
+                # For artifacts, format_artifact_content already includes details wrapping, so use it directly
                 formatted_artifact = format_artifact_content(artifact_content, config, artifact_file_path)
-                wrapped_tool = wrap_with_details(summary, formatted_artifact, "tools")
-                output.append(wrapped_tool)
+                output.append(formatted_artifact)
 
             else:
                 output.append(f"\n**Artifact: `{artifact_content.title}`**")
@@ -601,7 +598,7 @@ def process_tool_sequence(tool_blocks: List[dict], processor: ConversationProces
                 content_parts.append(f"\n*Optimization applied: {usage_count} similar operations consolidated*")
 
             tool_content = "\n\n".join(content_parts)
-            wrapped_tool = wrap_with_details(summary, tool_content, "tools")
+            wrapped_tool = wrap_with_details(summary, tool_content)
             output.append(wrapped_tool)
         else:
             # Original format with enhanced file handling
@@ -1082,7 +1079,7 @@ if __name__ == "__main__":
         enable_folding=True,
         enable_deduplication=True,
         enable_summary_tables=True,
-        enable_chronological_nesting=True,  # EXPERIMENTAL
+        enable_chronological_nesting=False,  # EXPERIMENTAL - Disabled for cleaner structure
         native_markdown_artifacts=True,     # CRITICAL FIX
         
         # Content preservation (non-negotiable)
